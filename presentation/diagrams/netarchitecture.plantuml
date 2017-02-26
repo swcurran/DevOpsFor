@@ -7,7 +7,7 @@ package "DMZ" {
 	node "Siteminder Agent" as sm
 }
 
-user -down-> rp
+user -up-> rp
 rp <-right-> sm
 
 package "Application Zone" {
