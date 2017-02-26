@@ -33,18 +33,14 @@ Stephen Curran, Cloud Compass Computing, Inc.
 
 The course is a mixture of presentation, labs and discussion. Please, feel free to jump in at a time with questions, comments, suggestions, snores, etc. The goal is the material is presented in _your_ context.
 
---
 
 There will be a couple of labs that allow you to say - *_I done DevOps_*
 
---
 
 Lots of opportunity for you to drive the course direction.
 
---
 
 Logistics...
---
 
 * Any constraints on time?
 * Washrooms
@@ -53,17 +49,16 @@ Logistics...
 ---
 
 # Introductions
-###Who are you?
+##Who are you?
 
 * Project
 * Role
 * Experience with Digital Services?
 
---
 
-### Who Am I?
+## Me?? 
 
-##### Stephen Curran, _Cloud Compass Computing, Inc., Quartech Systems_
+##### Stephen Curran, _Cloud Compass Computing, Inc._
 
 * Tightrope guy - business and technology
 * All about the delivery
@@ -86,21 +81,20 @@ Pathfinder Projects - School Bus, Hired Equipment
 
 # What is DevOps?
 
---
 
 DevOps (a clipped compound of "software DEVelopment" and "information technology OPerationS") is a term used to refer to a set of practices that emphasize the collaboration and communication of both software developers and information technology (IT) professionals while automating the process of software delivery and infrastructure changes. It aims at establishing a culture and environment where building, testing, and releasing software can happen rapidly, frequently, and more reliably.
 
 
 .footnote[.red.bold[*] Wikipedia]
 
---
 
 Well, that doesn't help...
 
 ???
 Unfortunately - not a straight forward "product"/"thing"
-* Cultural component - getting communications and shared goals
+* Cultural component
 * Automation and tools
+* Continuous Improvement
 
 So lets hold off on "What is it" and go to...
 
@@ -137,13 +131,12 @@ So lets hold off on "What is it" and go to...
 * Database: Postgres, SQL Server, Oracle, Mongo
 ]
 
---
 
 User Stories, usability, logic, rules...
 ---
 
-# Backup a bit - where does an app run?
-.right-column[<img width="70%"  src="images/netarchitecture.png">]   
+# Backup a bit - what is an application?
+.right-column[<img style="width:75%;"  src="images/netarchitecture.png">]   
 --    
 .left-column[
 ## Ops View
@@ -158,9 +151,8 @@ User Stories, usability, logic, rules...
 
 ]
 
---
 
-*Times 3*: Dev/Test/Prod
+*Times three*: Dev/Test/Prod
 ---
 # Making it Work - Theory
 
@@ -174,34 +166,27 @@ Meetings, documents, agreements and requests
 
 .right-column[<img src="images/sdlc_waterfall_model.jpg" alt="Waterfall Design" width="100%" >]
 
---
 
 * Requirements: _change_
 
---
 
 * Implementation: _Takes too long_
 
---
 
 * Testing: _Skipped_
 
---
 
 * Deployment is...
 
---
 
 ## &nbsp;&nbsp;&nbsp;&nbsp;...Dreaded
 
 ---
 # What Ginger Hears...
 
---
 
 .left-column[<img src="images/WhatDevsSee.png" alt="What Devs See" width="70%" >]
 
---
 
 .right-column[<img src="images/WhatOpsSee.png" alt="What Ops See" width="70%" >]
 
@@ -210,7 +195,6 @@ Meetings, documents, agreements and requests
 # Deployment
 ### The rubber hits the road and...
 
---
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;...so does *_The Wall of Confusion_*
 
@@ -234,7 +218,6 @@ Meetings, documents, agreements and requests
    * Premise: To deploy this app, do this...
    * Assumption: The writer knows the readers world...impossible
 
---
 
 * Impact:
    * Steps are performed manually
@@ -257,7 +240,6 @@ Example - doing home PC support - remotely
       
 # Which leads to...
 
---
 
 * The _iStore_ waste
    * To eliminate unwanted dependencies - over-provision - take longer, waste funds
@@ -269,7 +251,6 @@ Example - doing home PC support - remotely
 
 The release party night, and...
 
---
 
 .center[<img src="images/dayafter.jpg" alt="The Day After" width="75%" >]
 
@@ -295,7 +276,6 @@ The release party night, and...
 
 * Except - the users still want more fixes/capabilities
 
---
 
 <img src="images/WallOfConfusionChange.png" alt="The Wall of Confusion - Change" width="60%" >
 
@@ -323,11 +303,9 @@ The release party night, and...
 
 Applying Lean principles to deployment: Maximize value; minimize waste
 
---
 
 <img src="images/leanprocess.png" alt="Lean Process - Continuous Improvement" width="65%" >
 
---
 
 ...using some really powerful tools
 
@@ -348,12 +326,10 @@ The shoulders of giants - continuously
     * Restart components
     * Verify components
 
---
     
 * Better: Write it as a repeatable script
    * Not easy - done incrementally - by lazy programmers
 
---
    
 * Even Better: Create tools to improve each step
 
@@ -367,7 +343,6 @@ Common - developers best effort
 
 <img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="80%" >
 
---
 
 * Subversion, git, github - manage code
 * Maven, grunt - build tools
@@ -378,9 +353,7 @@ Common - developers best effort
 
 ---
 
-# So Many Tools...
-
-<img src="images/XebiaLabsPeriodicTableDevOps.png" alt="Periodic Table of DevOps" width="90%" >
+<img src="images/XebiaLabsPeriodicTableDevOps.png" alt="Periodic Table of DevOps" width="80%" >
 
 .footnote[Credit - Xebia Labs - https://xebialabs.com/periodic-table-of-devops-tools/]
 
@@ -388,15 +361,12 @@ Common - developers best effort
 
 # Problem: The Day After
 
---
 
-### Solution: Really Fast Releases
+## Solution: Really Fast Releases
 
---
 
 .right-column[<img src="images/lessthan30minutes.png" alt="Less than 30 minute releases" width="65%" >]
 
---
 
 .left-column[
 
@@ -410,6 +380,7 @@ Common - developers best effort
    * Deploy to Test
    * Verify
    * Deploy To Production...phewwww!!!
+* or Rollback (rare)
 
 ]
 
@@ -417,25 +388,18 @@ Common - developers best effort
 
 # Problem: Change is Bad
 
-<img src="images/ReleasePainSpiral.png" alt="Release pain spiral" width="45%" >
-
-Risk: Big Release - Big Risk - many things to break - hard to fix
-
-Risk: Small Release - Small Risk - only a few things to break - easy to fix
-
-.footnote[Credit: Spotify Engineering Culture - https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/]
+<img src="images/ReleasePainSpiral.png" alt="Release pain spiral" width="60%" >
+.footnote[Credit: Henry Kniberg - Spotify Engineering Culture - https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/]
 
 ---
 
 # Problem: Works on my System!
 
---
 
-### Solution: Consistent Environments
+## Solution: Consistent Environments
 
 .right-column[<img src="images/Pets-Cattle-2.png" alt="Pets vs. Cattle" width="80%" >]
 
---
 
 .left-column[
 
@@ -459,24 +423,19 @@ In fact - there is a good argument to make home PCs the same
 
 # Problem: Dependencies
 
---
 
-### Solution: Stop it!!
+## Solution: Stop it!!
 
---
 
 .right-column[<img src="images/DecoupledReleases.png" alt="Decoupled Releases" width="100%" >]
 .left-column[]
 
---
 
 * Enterprise Release Scheduling - don't!!
 
---
 
 * Eliminate artificial deadlines
 
---
 
 * Don't share resources (servers, etc.) etc.
   * Architectural changes
@@ -492,12 +451,10 @@ In fact - there is a good argument to make home PCs the same
 * A culture of continuous improvement as it relates to the delivery of systems
 * ...supported by a growing (and standardizing) set of automation tools
 
---
 
 .right-column[<img src="images/The-Phoenix-Project.jpg" alt="Decoupled Releases" width="80%" >]
 .left-column[]
 
---
 
 ### The Three Ways
 * Systems Thinking
@@ -513,7 +470,7 @@ In fact - there is a good argument to make home PCs the same
 .left-column[
 
 * Automatic Deployment
-* Consistent Environments
+* Developers environments
 * 
 
 ]
