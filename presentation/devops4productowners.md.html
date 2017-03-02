@@ -10,12 +10,15 @@
 
 class: center, middle
 
+
 ## An OCIO Digital Literacy Course<BR>_DevOps For Product Owners_
 ### Part 1: The Big Questions
 
 <img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
 
 Stephen Curran, Cloud Compass Computing, Inc.
+
+.footnote[This work is licensed to the public under a Creative Commons Attribution 4.0 license. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
 
 ---
 
@@ -25,7 +28,7 @@ Stephen Curran, Cloud Compass Computing, Inc.
 1. Introductions
 1. What is DevOps?
 2. What is the Cloud?
-3. What is the Business Impact?
+3. Why does it matter to the Business?
 
 ---
 # Approach
@@ -46,19 +49,65 @@ Logistics...
 * Food and beverages
 
 ---
+count:false
+
+#Introduction .red[Exercise]
+
+Process:
+
+* On go - head to a corner - even number in each
+* Take turns answering a question on the screen and discuss
+* 3 minutes - end of round
+* Go to another corner and meet new people
+   * One person stays, the others go
+* Repeat x3
+
+--
+
+Trick - meet .green[EVERYONE]
+
+
+???
+http://www.liberatingstructures.com/2-impromptu-networking/
+---
+count:false
+
+# Why do you love technology?
+
+---
+count:false
+
+# Why are you hindered by technology?
+
+---
+count:false
+
+# Have you been on a "app release" team?
+# How did it go?
+
+---
 
 #Introductions
 ###Who are you?
 
+.left-column[
 * Project
 * Role
 * Digital Services experience?
+]
+.right-column[
+* Driver, key player on a technology project
+* Been a team member on a technology project
+* Provided requirements/Tested software before release
+* Used a custom government applications
+* Use Outlook, Word and Excel
+* Don't use a computer
+]
 
+.left-column[]
 --
 
-### Who Am I?
-
-##### Stephen Curran, _Cloud Compass Computing, Inc., Quartech Systems_
+### Me
 
 * I walk the line - business and technology
 * All about delivery
@@ -67,9 +116,9 @@ Logistics...
 * BC Government Projects ICM, JAG and MOTI - _School Bus_ and _Hired Equipment_
   
 ???
-Digital Servies - Service Design, Agile
 
-* Engineer – walking between Tech/Business
+Digital Services - Service Design, Agile
+
 * Software Development Management – Application Delivery
 * Biggest – US Federal Government HR System – Avue Central
    * Classification, Pay Grades, Recruiting, Performance Management
@@ -77,8 +126,8 @@ Digital Servies - Service Design, Agile
    * Entry Hiring for Dept. of Justice Lawyers, Capital Police Officers
    * Forest Service annual Fire Hire
    * Crazy management
-BC Government – ICM, PMO, Courts Projects
-Pathfinder Projects - School Bus, Hired Equipment
+* BC Government – ICM, PMO, Courts Projects
+* Pathfinder Projects - School Bus, Hired Equipment
 
 ---
 
@@ -92,11 +141,13 @@ DevOps (a clipped compound of "software DEVelopment" and "information technology
 
 --
 
-Well, that doesn't help...
+###Well, that doesn't help much...
 
 ???
-Unfortunately - not a straight forward "product"/"thing"
-* Cultural component - getting communications and shared goals
+DevOps - not a straight forward "product"/"thing"
+* Name of a conference presentation
+* Cultural component - improving communications and shared goals
+* Lean component - continuous improvement
 * Automation and tools
 
 So lets hold off on "What is it" and go to...
@@ -166,6 +217,13 @@ User Stories, usability, logic, rules...
 
 Meetings, documents, agreements and requests
 
+???
+
+Note - this is just like software development/test
+
+But this is just about deployment
+
+In government - sometimes not obvious to the developers that this needs to be done
 ---
 
 # Reality
@@ -207,10 +265,12 @@ Meetings, documents, agreements and requests
 
 ???
 
-Expected
+Not Surprising and no one's fault
 
 * Devs - 100% of functionality, end user requirements, changes
 * Ops - 100 other apps to manage, production issues
+* It's not obvious what's needed
+* It's really hard to get budget if you can define exactly the benefit
 
 ---
 # Deployment
@@ -227,9 +287,10 @@ Expected
 # What goes wrong?
 ###Inconsistent Environments
 
-* Developers build in their world, deliver to a different one
-   * Each Dev creates their own development/test capability - best efforts
-      * Execution environment doesn't match production; minimal test data
+* Developers develop in their world, deliver to a different one
+   * Each Dev creates their own development/test capability
+      * Execution environment doesn't match production
+      * Minimal test data
    * Periodically delivers code - usually at a milestone - e.g. UAT
      * Agile _should_ fix that
    * Test data doesn't match production
@@ -241,6 +302,8 @@ Expected
 * It works on my machine!
    
 ???
+
+* On first delivery try - may or may not work
 
 * Performance must be acceptable
    * But volume of data not considered
@@ -263,13 +326,13 @@ Communication is via Word documents - the dreaded .red[_Release Guide_]
 ###Impact:
 
 * Steps are performed manually
-* On-the-fly adjustments are made...further invalidating the assumption
+* On-the-fly compensations are made...further invalidating the assumption
   * On Dev, Test and Prod
 
 ???
 
-Example - doing home PC support - remotely
-Example - assume a piece of software is present - missing, so add it on Test.
+* Example - doing home PC support - remotely
+* Example - assume a piece of software is present - missing, so add it on Test.
 
 ---
 
@@ -299,7 +362,7 @@ Example - assume a piece of software is present - missing, so add it on Test.
 
 .center[<img src="images/dayafter.jpg" alt="The Day After" width="75%" >]
 
-.footnote[Credit: Twentieth Century Fox - _The Day After_]
+.footnote[CCredit: Twentieth Century Fox - _The Day After_]
 ???
 
 * Users can't log in
@@ -311,12 +374,19 @@ Example - assume a piece of software is present - missing, so add it on Test.
     * Monitoring
     * Logging
     * Capacity
----
 
+A day - or several - fixing things
+
+???
+
+* Often the issues are minor and easily fixed
+* Rare that something unexpected and huge hits
+---
 # The Reflex Response
 
 * We are doing it right, we just need to do it .red[*better*] next time
 * Test more - take longer, check _EVERYTHING_
+* For now,though... .red.bold[DON'T CHANGE ANYTHING!!]
 
 --
 
@@ -325,7 +395,12 @@ Example - assume a piece of software is present - missing, so add it on Test.
 
 --
 
-<img src="images/WallOfConfusionChange.png" alt="The Wall of Confusion - Change" width="57%" >
+<img src="images/WallOfConfusionChange.png" alt="The Wall of Confusion - Change" width="53%" >
+
+???
+
+* Checklists are really popular for this
+* The checklists grow continuously as more scenarios are found
 
 ---
 # It's a little worse in Government
@@ -342,7 +417,7 @@ Example - assume a piece of software is present - missing, so add it on Test.
 .left-column[
 * Each application is a project - an event
    * Not a product with a lifecycle
-   * Focus is on the app, not long term
+   * Focus is on the app, not the long term
 * Contracted teams
    * Each starts with own approach & tools
    * Highly variable contact with Ops
@@ -355,6 +430,11 @@ Example - assume a piece of software is present - missing, so add it on Test.
 
 
 ]
+
+???
+
+* Example Local Change: Generate the Release Guide
+
 ---
 # So...What is DevOps?
 
@@ -372,7 +452,11 @@ A culture of applying Lean principles to the end to end systems:
 
 ???
 
-The shoulders of giants - continuously
+Building on the shoulders of giants - continuously
+
+???
+
+Open source is huge here - big companies collaborating on powerful tools
 
 ---
 
@@ -390,8 +474,12 @@ And to some extent, driven by agile...
 
 Why driven? - agile requires frequent releases vs. waterfall "one-time" release events - too painful to deploy without automation
 
-Working software - not Release Guides
-Customer - is each other dev <--> ops
+* Working software - not Release Guides
+* Customer - is each other dev <--> ops
+
+???
+
+Let's talk about solutions to the common challenges
 ---
 
 # Problem: The Release Guide
@@ -416,7 +504,7 @@ Customer - is each other dev <--> ops
 Example - ICM - 24-48 hours of orchestrated activities - 10 people in a room
 Common - developers best effort 
 
-COTS Software - especially from early 2000s
+WARNING: COTS Software - especially from early 2000s
 ---
 
 # Solution: The Deployment Pipeline
@@ -430,8 +518,6 @@ COTS Software - especially from early 2000s
 * Selenium, Jmeter - integration test tools
 * Migrations, Datical, E-F - database upgrades
 * Jenkins - Continuous Integration, job runner
-
---
 
 
 * Connected via triggers
@@ -447,10 +533,25 @@ COTS Software - especially from early 2000s
 ---
 
 # Problem: The Day After
-
 --
 
-### Solution: Release Early and Often - "_Shift Left_"
+### Traditional:  Testing V
+<img src="images/traditional_v.png" alt="Traditional V Testing" width="59%" >
+
+???
+
+* Unit Testing
+* Integration Testing
+* Systems Integration Testing
+* System Testing
+* Acceptance Testing
+* Operational Testing - does it work live?
+
+---
+# Problem: The Day After
+
+
+### Solution: Test (and deploy) Early and Often - "_Shift Left_"
 
 <img src="images/Agile_DevOps_Shift_Left_Testing.jpg" alt="Shift Left - Agile and DevOps" width="60%" >
 
@@ -461,11 +562,11 @@ Verification of standards - database, security, look and feel, etc., etc.
 
 ???
 
-Continuous Integration
-Example: PCSS - 250 Releases in < 3 years - about once  weeks
-Example: CCSS, School Bus - deployment well before production, usage
-Non-functional requirements - real data in real production - controlled
-Benefit - users see the data in THEIR context - not test data
+* Continuous Integration
+   * Example: PCSS - 250 Releases in < 3 years - about once  weeks
+   * Example: CCSS, School Bus - deployment well before production, usage
+   * Non-functional requirements - real data in real production - controlled
+   * Benefit - users see the data in THEIR context - not test data
 
 Risk Mitigation
 
@@ -515,7 +616,12 @@ Traditional approach - 1, 3, and fix in production
 
 ???
 
-This applies to Dev, Test and Prod
+* Spotify!!!
+
+* This applies to Dev (every change), Test (regularly) and Prod (when Business wants)
+* Planning out a release - all the things to include vs. Facebook releases
+* ICM vs. CCD
+* Launching of a Rocket vs. Driving to work - adapt
 
 ---
 
@@ -612,15 +718,14 @@ Architectural Dependencies
 ### Anti-Patterns
 
 * No version control
-* Devs evironment not like Prod
+* Devs environments not like Prod
 * "Agile" but no DevOps
 * Cross Project Release Schedules
 * Text-based Release Guide
-* Post-deployment Fixes without Releases
+* Post-deployment fixes without Deploys
 * Multi-app Release Party Email Chains
 * Server Names - pets (vs. _Services_)
 * Test Date = Start UAT Date - 1 Day
-* Go to Test, go to Production dates
 * Production Date = Go Live Date - 1 Day
 
 
@@ -640,7 +745,6 @@ Architectural Dependencies
    * Triggered deploy to Test, Prod
    * No manual steps - _database_
 * Early and often to test, prod
-* Automated tests
 * Automatic feedback and notifications
 * App independence
 
@@ -648,6 +752,23 @@ Architectural Dependencies
 * Day After is just like the Day Before
 
 ]
+
+---
+
+#What's Important For the Business
+
+--
+###Raising the "anti-pattern" questions
+
+* How often are we releasing?
+* How soon can we deploy to Test? to Prod?
+   * What is the risk?
+   * Is there a way to mitigate that risk?
+* How long does a full release take?
+
+--
+
+###Lowering the risk to YOUR project
 
 ---
 
@@ -661,6 +782,58 @@ Architectural Dependencies
 .bold[Task] Deploy Application
 
 ---
+count:false
+#Scenario: The Day After Emergency
+
+You launched a brand new To Do app for your organization last night.
+
+* http://lab-student1-lab.apps.cloudcompass.ca/#!/
+
+Went to bed really happy - everyone liked it.
+
+--
+
+Got up this morning.  The DM called - the Minister says the app is .red[sad].  Too .red[sad].
+
+It needs to be .green.bold[AWESOME]!!
+
+* Change the title
+* Change the wording in the text box
+
+##Hurry!!!
+
+---
+count:false
+#Old way - 
+
+* A real release will take all day, so...
+* Get on production and FIX IT!
+
+--
+count:false
+
+#The DevOps way
+
+* The processes are in place
+* The change is easy, and easy to test
+* Do a release.  The .green[right] way.
+
+---
+count:false
+
+##Instructions:
+
+#&nbsp;
+
+#.center[https://goo.gl/mU54BQ]
+
+#&nbsp;
+
+* Github user: c3ilabs
+* Github password (shhhh....): lab-mar-02
+
+.red[NOTE]: Passwords may have the number "1", but don't have the letters "l" or "I"
+---
 
 # What we learned
 
@@ -669,17 +842,14 @@ Architectural Dependencies
 * There are lots of moving pieces
    * Unthinkable to do all the steps manually
 
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="45%" >
 --
 
-# What we glossed over...
+### What we glossed over...
 
-* The code
-* Server setup
-* Database setup
-* Network setup
-* Security setup
+* Setup - Developer and Environments
 * Testing
-* Integrations
+* Promotions - going to Test and Production
 * Documentation
 
 ???
@@ -834,7 +1004,7 @@ name: paas
 
 * New and evolving quickly
 * Complex to manage at scale - which is where they are most useful
-* True use...building blocks
+* True use...as building blocks
 
 ---
 
@@ -984,8 +1154,8 @@ Cloud Options are becoming possible:
 ###What is DevOps?
 * We learned:
    * A culture of applying Lean principles to the end to end systems
+   * Reduce risk by addressing it as early as possible
    * Backed by lots of powerful tools - largely developed and shared in the open
-   * Capabililties built on capabilities - the shoulder of giants
    * Lab - deploying a complex Web Application - easily
 
 ---
@@ -1009,6 +1179,13 @@ Cloud Options are becoming possible:
 
 ---
    #End of Part 1
+   
+   #&nbsp;
+   
+   #Course Feedback: https://goo.gl/6qb4yl
+   #&nbsp;
+   
+   ###References list for those interested in learning more
 
 
 ---
