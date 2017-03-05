@@ -9,7 +9,7 @@ pdf=`echo $pres | sed 's/.md.html/.pdf/'`
 
 # Strip out the incremental slide indicators - "--"
 
-sed '/^--$/d' $pres >$stripped
+sed '/^--$/d' $pres | sed '/count:false/,/---/d' >$stripped
 
 # Run decktape to create the screenshots and pdf
 

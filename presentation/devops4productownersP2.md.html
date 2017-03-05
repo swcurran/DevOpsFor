@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DevOps in Government</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/presentation.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+## An OCIO Digital Literacy Course<BR>_DevOps For Product Owners_
+### Part 2: In The Clouds and On The Ground
+
+<img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
+
+Stephen Curran, Cloud Compass Computing, Inc.
+
+.footnote[This work is licensed to the public under a Creative Commons Attribution 4.0 license. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
+
+---
+
+# DevOps For Product Owners
+## Part 2: In The Clouds and On The Ground
+
+1. Review of Part 1
+2. To The Cloud: Models and Options
+3. On the Ground - The Pipeline
+4. Wrapup - An Application Health Check
+---
+count:false
+
+# Exercise
+???
+http://www.liberatingstructures.com/
+---
+
+#Review
+
+* Traditional approaches lead to deployment challenges
+* Processes reliant on:
+   * People
+   * Paper
+   * Manual Steps
+* Evolution via increased rigour
+   * ...but resulting in higher risks - not lower
+
+???
+* Release Guides
+* Inconsistent environments
+* Unnecessary Dependencies
+
+---
+
+#DevOps
+
+* The application of Lean Principles across the end-to-end system
+   * A culture of continuous improvement
+   * ...based on a the build up of powerful tools
+* Processes reliant on:
+   * Standardization
+   * Automation
+   * Events (triggers) and notifications
+* Building up to a deployment pipeline
+   * Repeatable
+   * Robust
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="50%" >
+
+---
+
+# Enabling us to reduce risk by "Shifting Left"
+
+<img src="images/Agile_DevOps_Shift_Left_Testing.jpg" alt="Shift Left" width="70%" >
+???
+
+* Team approach - all members
+* A willingness to find/fix root causes
+* End to end - idea to production
+
+* Powered by open source software
+
+---
+
+# Are we doing DevOps??
+
+.left-column[
+### Anti-Patterns
+
+* No version control
+* Devs environments not like Prod
+* "Agile" but no DevOps
+* Cross Project Release Schedules
+* Many manual steps (Release guide)
+* Post-deployment fixes without Deploys
+* Multi-app Release Party Email Chains
+* Server Names - pets (vs. _Services_)
+* Test Date = Start UAT Date - 1 Day
+* Production Date = Go Live Date - 1 Day
+
+
+* Day After Syndrome - it hurts!
+
+]
+
+--
+.right-column[
+### Patterns
+
+* Version control for everything
+* Devs world ~= Prod
+* Many, many, many deployments
+   * Support Agile
+   * Automatic deploy to Dev
+   * Triggered deploy to Test, Prod
+   * No manual steps - _database_
+* Early and often to test, prod
+* Automatic feedback and notifications
+* App independence
+
+
+* Day After is just like the Day Before
+
+]
+
+---
+
+# What is the Cloud?
+
+* The "Cloud" is the promise of the future
+   * Everybody says so
+   * What does that mean?
+
+* Often discussed at the same time as DevOps
+   * What's the connection?
+
+* "Let's just run it in the Cloud"
+   * What would be the impact?
+---
+#The Building Blocks of the Cloud
+
+.left-column[
+<img src="images/1userver.jpg" alt="1U Server" width="80%" > 
+]
+
+--
+
+.left-column[
+<img src="images/Physical_vs_Virtual.PNG" alt="" width="90%" > 
+]
+
+--
+.right-column[
+<img src="images/googleracks.jpg" alt="Racks" width="60%" >
+]
+
+--
+
+.right-column[
+<img src="images/GoogleDataCentre.png" alt="Data Center" width="90%" >
+]
+
+
+???
+* Compute
+* Disk
+* Network - connectivity - everything disconnected - explicit action to emable connectivity
+---
+
+
+#Networking and Security - pre-Cloud
+
+<img src="images/networkzones.gif" alt="Network Zones" width="50%" >
+
+--
+####Times 3 - Dev, Test, Prod
+
+--
+####Times every Ministry
+
+???
+
+
+---
+# Our App Maps on to this
+.left-column[
+<img src="images/networkzones.gif" alt="Network Zones" width="60%" >
+<img src="images/netarchitecture.png" alt="Canonical Web Architecture - Ops View" width="50%" > 
+]
+--
+.right-column[
+
+* Configure/secure URL - Siteminder setup
+* Procure Compute and Storage
+   * Request servers - iStores
+      * Physical Servers
+      * VMs - Virtual Machines
+      * Placement in proper Zone (VLAN)
+   * Configure Software servers
+   * Install application - when ready
+* Establish Connectivity
+   * Request firewall updates - iStores
+   * Configure software connections
+* Changes to compute/network? - iStores
+]
+---
+#The iStore Impact
+
+* Tracked - barely
+   * Per ministry solutions for tracking assets (beyond billing)
+* Money/Time Optimizations
+   * Setup environment once
+   * Reuse for many small applications
+     * Creates dependencies between unrelated apps
+     * Forces technology decisions - lock in
+* Changes are "difficult"
+   * Anything needing an iStore is slow
+   * Innovative adjustments
+* Overprovision big environments
+   * Design for the heaviest load
+
+---
+# The Cloud: * as a Service
+
+Once you aren't using your computer for computing purposes - you are using the Cloud
+
+* Dropbox / Google Drive - File Storage Service
+* Office 365 / Google Docs - Office Editing Service
+* Netflix / CraveTV - Video Entertainment Service
+* Sharepoint / Shared Drives - Business Storage
+
+Since all gov't apps aren't on our computers - they are all "in the Cloud"
+
+So let's talk * as a Service - IaaS, PaaS, SaaS
+---
+# Pizza as a Service
+
+<img src="images/pizza.jpg" alt="Pizza as a Service" width="60%" >
+
+---
+# On-Premise, IaaS, PaaS, SaaS
+
+<img src="images/cloud.png" alt="Everything as a Service" width="70%" >
+
+---
+# HPAS Services / BC Gov't Data Centres
+
+.right-column[<img src="images/cloud-OnPremise.png" alt="On Premise Infrastructure" width="40%" >]
+
+.left-column[]
+
+* On-premise-ish, with iStore orders
+* Physical and VM servers
+* Networking via VLANs and Firewall changes
+* Standard images - Windows, Linux
+* Standard software - e.g. Oracle, .NET
+* No containers (Docker)
+* Extra services - patching, monitoring
+* Backups and restores
+* .red[New!] IaaS-ish Offering
+
+---
+
+# IaaS .bold.red[*] AWS (Amazon), Azure
+.footnote[.bold.red[*] And a lot more services...]
+
+.right-column[<img src="images/cloud-IaaS.png" alt="Infrastructure as a Service" width="30%" >]
+
+.left-column[]
+
+* Now in Canada
+* Procurement: website, credit card
+* By use billing - minute and gigabyte
+* Spin up servers, configure storage/network
+   * Website
+   * Configuration script
+   * API - programmable - this is .bold.red[HUGE]
+* Resilency - multiple regions (data centres)
+* Expertise
+* Ground up design to be automated
+
+---
+name: paas
+# PaaS: HPAS OpenShift, AWS, Azure
+
+.right-column[<img src="images/cloud-PaaS.png" alt="Platform as a Service" width="30%" >]
+
+.left-column[]
+
+* Declarative needs - concise
+* Dynamic setup and configuration
+   * Spin up app components
+   * Software Defined Network (SDN)
+   * True cattle - that die (and get replaced)
+   * Cattle are less stable - but that's Ok
+* New technologies
+   * Containers (Docker and others)
+   * Orchestration (Kubernetes and others)
+---
+
+# Digression! Physicals, VMs, Containers
+
+#### Goals: Resource optimization, consist execution - same everywhere
+
+<img src="images/docker1.png" alt="VMs vs. Containers" width="50%" >
+
+---
+# Container Benefits
+
+* Easy isolation - _feels like a whole computer_
+* Really lightweight - high density deployment - many on one host
+* Create once, run everywhere - the "Shipping Container" analogy
+   * Run containers on dev machine and on Production - same thing!
+
+## But...
+
+* New and evolving quickly
+* Complex to manage at scale - which is where they are most useful
+* True use...as building blocks
+
+---
+
+# Digression! What is Orchestration?
+
+.left-column[<img src="images/simplearchitecture.png" alt="Simple Architecture" width="25%" >
+]
+
+--
+
+.right-column[<img src="images/complexarchitecture.png" alt="Complex Architecture" width="45%" >]
+
+--
+
+.left-column[
+
+* What if _Front End 1_ node crashes?
+* What if the load goes up? down?
+* What if the main database crashes?
+* What if we want to deploy an update?
+]
+
+???
+
+Note the names on the servers - manually order, setup, connected, firewalls
+
+---
+# Orchestration
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+name: rss-site
+spec:
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       app: web
+   spec:
+     containers:
+       – name: front-end
+         image: nginx
+         ports:
+           – containerPort: 80
+       – name: rss-reader
+         image: nickchase/rss-php-nginx:v1
+         ports:
+           – containerPort: 88
+```
+---
+template: paas
+
+--
+
+
+.left-column[
+#### Devs dream
+
+* Create code
+* Declare configuration, evolve it easily
+* Declare requirements
+* Deploy easily
+]
+
+--
+
+.right-column[
+#### Challenges
+
+* New technology
+* New techniques
+* For now: Open Source only
+]
+---
+# SaaS: Office 365, Salesforce
+
+* End users login, use the services
+* Some integration with the Enterprise - Single-Sign On (SSO)
+
+### Salesforce - also a PaaS
+
+* Roots as SaaS - Sales automation system
+* Coming to Canada - running on AWS Canada instance
+* Has evolved into a PaaS - .bold[Force.com]
+   * Heavy on the "configure" model vs. code - especially the backend
+   * Option to build custom frontend talking to Force.com
+
+BC Gov't Salesforce deployments (MTICS, MSDSI, JAG) but have been challenging
+
+* Data Centres in the US - so no personal information
+   * Informational apps - no stored data
+   * Data Residency handling for personal information
+---
+
+# * as a Service Options for Business
+
+Government hosted services are (sort of) easy
+
+* Traditional - with iStores and a DIY-attitude - you are on your way
+* IaaS - with a DIY-attitude - you are on your way
+* PaaS - with an I-want-to-learn-attitude - you are on your way
+
+Cloud Options are becoming possible:
+
+* Azure, AWS IaaS are in Canada
+* Azure and AWS - many other services
+* Cloud BC option is coming
+* Salesforce will soon be in Canada - on AWS
+* Concern is governance - where are all the apps, where is the data?
+
+???
+* Question: Where is the data?  Kamloops data centre
+* If we go to the cloud - how is that answered? 
+---
+
+#Cloud Summary and Directions
+
+###Four major Cloud models - On-Premise and I, P and S aaS
+
+* HPAS supports (mostly) On-Premise, but also IaaS and PaaS (via Red Hat OpenShift)
+
+--
+
+
+* New public cloud options are coming - but not easily obtained
+   * Cloud BC could enable those options
+   * Potential: Private/Public Cloud - capabilities extend to use Azure/AWS resources
+
+--
+
+
+* Direction is towards PaaS - user expectations make requirements too complex for other approach
+
+---
+#Break
+
+---
+#Extending the Pipeline
+
+* Current pipeline
+   * Deployment
+     * Commit a Code Changes
+     * Build the Code for deployment
+     * Deploy the Code
+     * Promote the Code
+* What else can we do?
+   * Shift left!
+   * Monitor and learn
+---
+#DevOps and Testing
+
+* Unit Test - chunks of code
+   * TDD - Test Driven Development
+     * Write Tests
+     * Run the Tests - fail
+     * Write the code
+     * Run the Tests - until they pass
+     * Commit both - the code and test
+   * During the development processes
+   * Post build - to verify the build
+   
+--
+
+
+* Integration Test - program units in combination
+   * Example: app server code that updates the database
+   * During the development processes
+   * Post Build - to verify the build
+
+---
+#DevOps and Testing
+
+* Manual Testing
+ * Finding bugs in the system?
+ * Combinations of data/unexpected activities
+ * Edge conditions - short text, long text, 0s, etc.
+* Usability Testing
+   * Does it meet the business need?
+   * Trade off - fix the interface or train users
+   * Types:
+      * Product Owner + Developer - during development
+      * Hallway testing
+      * Formal Usability Testing
+
+---
+#Formal Usability Testing
+
+* "Typical users" - but not engaged in the project
+* Process:
+  * Brief Introduction
+  * Assign business tasks
+  * Watch, take notes - don't help!
+
+--
+
+
+* What is easy?
+* Where do they struggle?
+
+--
+
+
+* Decisions:
+  * Easy to change? Fix
+  * Easy to get after an explanation? Leave
+  * Will require training
+     * Trade off - cost to fix once vs. Train everyone
+
+--
+  
+  
+* Expert Review
+* A/B Testing
+
+---
+
+#API Testing
+
+###What's an Application Programming Interface?
+
+<img src="images/apiexample.jpg" alt="API Example" width="70%" > 
+
+--
+
+.left-column[
+* Turn a resource into a service
+   * Contract - Set of calls, responses
+   * Backend changes? Keep the API
+   * System independence - isolation
+]
+
+.right-column[
+* Protect the resource
+   * Authentication/Authorization
+   * Volume-limiter
+   * Logging/Auditing
+]
+
+---
+#API Testing
+
+* Make an API call
+* Verify ("Assert") the response is expected
+   * Assertion not met - test fails
+* Easy to write - text
+   * Can even be generated
+* Relatively easy to maintain
+   * APIs are stable, so are the tests
+   * Challenge - getting consistent data
+---
+#User Interface Testing
+
+* Manual - easy
+   * But not repeatable
+* Automated - difficult
+   * Hard to create
+   * Hard to maintain
+   * True end-to-end test
+     * The Holy Grail!
+   * When does a change mean a fail?
+   * Fixing a usability problem
+     * Intended change
+     * Fails the test - fix the test
+
+---
+#Non-Functional Requirements and Testing
+
+* System deployed properly
+* System is online
+* System response time is acceptable
+* System can scale
+* System is secure
+* System is accessible (to disabled users)
+* System has a disaster recovery plan
+
+#####Traditional - verify this as an event during development
+
+#####Pipeline - verify this continually as system evolves
+
+#####Monitoring - verify this continually as the system operates
+---
+#Common Non-Functional Testing
+
+* Load Testing
+   * Commonly - API Testing from a scaled up external source
+     * Script of "typical interaction(s)"
+     * Tool/Service to run many instances of script - 100/500/1000, etc.
+   * Typically - still an event
+   * Once in production - real data is available - use it.
+--
+
+* Security testing
+   * Static - analyze the code for vulnerabilities
+   * Static - verify libraries/versions against database of vulnerabilities
+   * Dynamic - tool runs script of known hacking techniques
+--
+
+* Chaos Monkey testing
+---
+#Monitoring your system in Production
+
+###Your Application doesn't end with the launch
+
+--
+
+####Google's Golden Signals
+
+* Latency - response time for requests
+* Traffic - current activity on the system (requests/second)
+* Errors - rate of requests that fail
+* Saturation - current capacity available (CPU, memory, etc.)
+---
+#Monitoring and Responding
+
+* Monitoring usage trends:
+   * Average response time (request, API, database)
+   * Request error rate
+   * Resource usage vs. capacity
+* Notifications of "out of range" events
+   * Emails of all unexpected server errors
+
+   
+* The ops runbook
+   * If .red[this] happens then do .green[that]
+   * Leads to automating responses to events - no human intervention
+     * e.g. Server crashed?  Automatically restart new instance
+   
+
+* Industry trend: Monitor the _service_ not the _resources_
+
+---
+
+#The Application Health Check
+
+--
+
+### Deployment Pipeline
+* Is there an End-to-End .bold.green[automated] deployment pipeline?
+* Are the manual steps and governance documented?
+* How long does it take to deploy a trivial change?
+* Is there a culture of continuous improvement?
+--
+
+
+### Deployment Platform
+* Is there an Operations Runbook?
+* Is the platform flexible?
+* Is the platform managed?
+* How are platform events handled/escalated?
+* Is there a culture of continuous improvement?
+---
+#The Application Health Check
+
+### Application Independence
+* Is the application isolated from other systems?
+   * Who has to know if the system changed?
+   * What has to happen if other systems are changed?
+* Does the business own the deployment decision
+* Is there a plan for eliminating dependencies?
+---
+
+#The Application Health Check
+
+.left-column[
+### Manual Testing
+* Are the developers using TDD?
+* Is there a tight develop/test relationship?
+* Is there a thorough test plan?
+   * Is there a framework for tracking test runs?
+* Is load testing needed?
+   * Large user base with the potential for usage spikes
+
+]
+
+--
+
+.right-column[
+
+### Automated Testing
+* How much testing is included in the deployment pipeline?
+
+
+   * Unit Tests
+   * Integration Tests
+     * API Tests
+     * User Interface Tests
+   * Security Scans
+     * Static
+     * Dynamic
+   * Deployment Validation Tests
+]
+---
+#The Application Health Check
+
+###Monitoring and Responding
+
+.left-column[
+* Is there transparent usage/performance monitoring?
+   * Response time
+   * Request rate
+   * Error rate
+   * Resources usage
+   
+   
+* Are out of standard notifications sent out?
+
+* Are adequate backup/restore actions in place?
+
+]
+
+--
+
+.right-column[
+
+* Are trends being monitored?<br><br>
+* Is there a .bold[verified] disaster recovery plan?
+   * e.g. What happens if the database is lost?
+   
+
+* Is there an application Ops Runbook?
+   * What to do manually?
+   * Evolving to what happens automatically?
+   * Is there a culture of continuous improvement?
+]
+
+---
+#The Application Health Check
+
+###Focus on the pain
+###Establish a culture of continuous improvement
+
+<img src="images/leanprocess.png" alt="Lean Process" width="50%" > 
+---
+#Review
+
+###Why is DevOps?
+* We looked at:
+   * Complexity in deploying applications using documentation and manual processes
+   * Application Architecture
+   * Why traditional approaches are hard for Devs and Ops
+   * Why traditional approaches are prevalent in Government - project-focus
+
+
+--
+
+###What is DevOps?
+* We learned:
+   * A culture of applying Lean principles to the end to end systems
+   * Reduce risk by addressing it as early as possible
+   * Backed by lots of powerful tools - largely developed and shared in the open
+   * Lab - deploying a complex Web Application - easily
+
+---
+#Review
+
+###What is the Cloud?
+* We discovered:
+   * About Data Centres
+   * All the Services (and perhaps some digressions...)
+   * Options for delivering applications on platforms
+   * In BC - HPAS is the main choice, but more options are coming
+   * Regardless, the underpinnings are DevOps
+     * Declare what you need - let the platform figure it out
+
+---
+#Review
+
+###What happens on the ground?
+* We learned about:
+   * Extending the deployment pipeline
+   * Testing types and best practices
+   * Application health check
+   
+####In one sentence: Establish a culture of continuous improvement
+
+<img src="images/leanprocess.png" alt="Culture of improvement" width="40%" >
+
+
+---
+   #That's it!
+   
+   #&nbsp;
+   
+   #Course Feedback: https://goo.gl/6qb4yl
+   #&nbsp;
+   
+   ####References list available for those interested in learning more
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({countIncrementalSlides: false, ratio: '16:9', highlightLines: true});
+    </script>
+  </body>
+</html>
