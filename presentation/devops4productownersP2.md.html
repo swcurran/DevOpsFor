@@ -7,50 +7,50 @@
   </head>
   <body>
     <textarea id="source">
-
 class: center, middle
-
-
 ## An OCIO Digital Literacy Course<BR>_DevOps For Product Owners_
-### Part 2: In The Clouds and On The Ground
+### Part 2: In The Clouds, On The Ground
 
 <img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
 
-Stephen Curran, Cloud Compass Computing, Inc.
+Stephen Curran, Cloud Compass Computing, Inc.<br><font size="3"><a href="https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productownersP2.pdf" alt="PDF Version">Link to PDF Version</a></font>
+
+&nbsp;
 
 .footnote[This work is licensed to the public under a Creative Commons Attribution 4.0 license. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
 
 ---
 
 # DevOps For Product Owners
-## Part 2: In The Clouds and On The Ground
+## Part 2: In The Clouds, On The Ground
 
 1. Review of Part 1
 2. To The Cloud: Models and Options
-3. On the Ground - The Pipeline
+3. On the Ground - Extending the Pipeline
 4. Wrapup - An Application Health Check
----
-count:false
-
-# Exercise
 ???
 http://www.liberatingstructures.com/
 ---
 
-#Review
+#Part 1 Review
 
+.left-column[
 * Traditional approaches lead to deployment challenges
 * Processes reliant on:
    * People
    * Paper
    * Manual Steps
-* Evolution via increased rigour
+* Evolution historically via increased rigour, fewer releases
    * ...but resulting in higher risks - not lower
-
+]
+.right-column[
+<img src="images/ReleasePainSpiral.png" alt="Release Pain Spiral" width="70%" > 
+]
 ???
 * Release Guides
 * Inconsistent environments
 * Unnecessary Dependencies
+* Longer periods between releases 
 
 ---
 
@@ -66,7 +66,7 @@ http://www.liberatingstructures.com/
 * Building up to a deployment pipeline
    * Repeatable
    * Robust
-<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="50%" >
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="60%" >
 
 ---
 
@@ -166,9 +166,8 @@ http://www.liberatingstructures.com/
 * Compute
 * Disk
 * Network - connectivity - everything disconnected - explicit action to emable connectivity
+
 ---
-
-
 #Networking and Security - pre-Cloud
 
 <img src="images/networkzones.gif" alt="Network Zones" width="50%" >
@@ -183,7 +182,7 @@ http://www.liberatingstructures.com/
 
 
 ---
-# Our App Maps on to this
+# Our App maps onto the Network
 .left-column[
 <img src="images/networkzones.gif" alt="Network Zones" width="60%" >
 <img src="images/netarchitecture.png" alt="Canonical Web Architecture - Ops View" width="50%" > 
@@ -215,13 +214,13 @@ http://www.liberatingstructures.com/
      * Creates dependencies between unrelated apps
      * Forces technology decisions - lock in
 * Changes are "difficult"
-   * Anything needing an iStore is slow
-   * Innovative adjustments
+   * Anything needing an iStore is slow - weeks to months
+   * "Innovative" adjustments
 * Overprovision big environments
-   * Design for the heaviest load
+   * Design for the heaviest anticipated load
 
 ---
-# The Cloud: * as a Service
+# The (Other) Cloud: * as a Service
 
 Once you aren't using your computer for computing purposes - you are using the Cloud
 
@@ -259,6 +258,7 @@ So let's talk * as a Service - IaaS, PaaS, SaaS
 * Extra services - patching, monitoring
 * Backups and restores
 * .red[New!] IaaS-ish Offering
+* .red[New!] PaaS Offering - Red Hat's OpenShift
 
 ---
 
@@ -292,8 +292,8 @@ name: paas
 * Dynamic setup and configuration
    * Spin up app components
    * Software Defined Network (SDN)
-   * True cattle - that die (and get replaced)
-   * Cattle are less stable - but that's Ok
+   * True cattle - die (and get replaced)
+   * Cattle are less stable - that's Ok
 * New technologies
    * Containers (Docker and others)
    * Orchestration (Kubernetes and others)
@@ -309,9 +309,10 @@ name: paas
 # Container Benefits
 
 * Easy isolation - _feels like a whole computer_
-* Really lightweight - high density deployment - many on one host
+* Really lightweight - high density - many on one host
 * Create once, run everywhere - the "Shipping Container" analogy
-   * Run containers on dev machine and on Production - same thing!
+   * Run the .bold.green[same] container on dev machine and Production
+   * Drastic reduction in shared dependencies
 
 ## But...
 
@@ -347,28 +348,41 @@ Note the names on the servers - manually order, setup, connected, firewalls
 ---
 # Orchestration
 
+.left-column[
 ```yaml
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-name: rss-site
-spec:
- replicas: 2
- template:
-   metadata:
-     labels:
-       app: web
-   spec:
-     containers:
-       – name: front-end
-         image: nginx
-         ports:
-           – containerPort: 80
-       – name: rss-reader
-         image: nickchase/rss-php-nginx:v1
-         ports:
-           – containerPort: 88
+lb:
+  image: dockercloud/haproxy
+  autorestart: always
+  links:
+    - web
+  ports:
+    - "80:80"
+web:
+  image: dockercloud/quickstart-python
+  autorestart: always
+  deploy_strategy: rolling
+  links:
+    - redis
+  environment:
+    - NAME=Friendly Users
+  deployment_strategy: high_availability
+  target_num_containers: 4
+redis:
+  image: redis
+  autorestart: always
+  deploy_strategy: rolling
+  environment:
+    - REDIS_PASS=password
 ```
+]
+
+.right-column[
+<img src="images/orchestration.png" alt="Orchestration YAML" width="70%" > 
+
+* With all networking connections defined
+]
+???
+
 ---
 template: paas
 
@@ -380,7 +394,6 @@ template: paas
 
 * Create code
 * Declare configuration, evolve it easily
-* Declare requirements
 * Deploy easily
 ]
 
@@ -389,7 +402,7 @@ template: paas
 .right-column[
 #### Challenges
 
-* New technology
+* New technologies
 * New techniques
 * For now: Open Source only
 ]
@@ -439,7 +452,7 @@ Cloud Options are becoming possible:
 
 ###Four major Cloud models - On-Premise and I, P and S aaS
 
-* HPAS supports (mostly) On-Premise, but also IaaS and PaaS (via Red Hat OpenShift)
+* HPAS supports (mostly) On-Premise, also IaaS and PaaS (Red Hat OpenShift)
 
 --
 
@@ -454,23 +467,30 @@ Cloud Options are becoming possible:
 * Direction is towards PaaS - user expectations make requirements too complex for other approach
 
 ---
-#Break
+#Break and Lab - The Extended Pipeline
 
 ---
 #Extending the Pipeline
 
-* Current pipeline
-   * Deployment
-     * Commit a Code Changes
-     * Build the Code for deployment
-     * Deploy the Code
-     * Promote the Code
-* What else can we do?
-   * Shift left!
-   * Monitor and learn
+###Demonstrated pipeline
+
+* Deployment
+ * Commit a Code Changes
+ * Build the Code for deployment
+ * Deploy the Code
+ * Promote the Code
+
+###What else can we do?
+
+* Shift left!
+ * Test and Verify on every deploy
+* Monitor and learn
+
+
 ---
 #DevOps and Testing
 
+.left-column[
 * Unit Test - chunks of code
    * TDD - Test Driven Development
      * Write Tests
@@ -478,31 +498,42 @@ Cloud Options are becoming possible:
      * Write the code
      * Run the Tests - until they pass
      * Commit both - the code and test
-   * During the development processes
-   * Post build - to verify the build
+   * Created during the development process
+   * Executed during development to prevent .red[regressions]
+   * Executed during or post-build
+      * To verify the build
+   
+   
+]
+--
+
+.right-column[
+* Integration Test - program units in combination
+   * Example: app server code that updates the database
+   * Created during the development process
+   * Executed post-build
+     * To verify the build
+]
+---
+#DevOps and Testing - Manual Testing
+
+* Manual Testing / UAT
+   * Combinations of data/unexpected activities
+   * Edge conditions - short text, long text, 0s, etc.
+   * UAT - Tracked test cases/executions - e.g. Zephyr within JIRA
+   * Automate - Regression Tests
+
    
 --
 
 
-* Integration Test - program units in combination
-   * Example: app server code that updates the database
-   * During the development processes
-   * Post Build - to verify the build
-
----
-#DevOps and Testing
-
-* Manual Testing
- * Finding bugs in the system?
- * Combinations of data/unexpected activities
- * Edge conditions - short text, long text, 0s, etc.
-* Usability Testing
-   * Does it meet the business need?
-   * Trade off - fix the interface or train users
-   * Types:
-      * Product Owner + Developer - during development
-      * Hallway testing
-      * Formal Usability Testing
+  * Usability Testing
+     * Does it meet the business need?
+     * Is it easy to use?
+     * Types:
+        * Product Owner + Developer - during development
+        * Hallway testing
+        * Formal Usability Testing
 
 ---
 #Formal Usability Testing
@@ -510,7 +541,7 @@ Cloud Options are becoming possible:
 * "Typical users" - but not engaged in the project
 * Process:
   * Brief Introduction
-  * Assign business tasks
+  * Assign business tasks to be completed
   * Watch, take notes - don't help!
 
 --
@@ -524,9 +555,9 @@ Cloud Options are becoming possible:
 
 * Decisions:
   * Easy to change? Fix
-  * Easy to get after an explanation? Leave
+  * Easy to understand after a one-time explanation? Leave
   * Will require training
-     * Trade off - cost to fix once vs. Train everyone
+     * Trade off: cost to fix once vs. cost to train everyone
 
 --
   
@@ -547,7 +578,7 @@ Cloud Options are becoming possible:
 .left-column[
 * Turn a resource into a service
    * Contract - Set of calls, responses
-   * Backend changes? Keep the API
+   * Backend changes? OK - keep the API
    * System independence - isolation
 ]
 
@@ -559,6 +590,52 @@ Cloud Options are becoming possible:
 ]
 
 ---
+#APIs in Modern Apps
+
+.left-column[
+* The interface between the front end and back end
+   * Isoldate backend from the front-end
+   * One API multiple front-ends
+     * Web
+     * iPhone
+     * Android
+* An interface for other applications
+   * Define the service - API
+   * Expose the service for others
+     * Bus Schedules/Locations
+     * Court Lists
+     * Access to legacy system e.g. ICBC
+     * Manage Outlook appointments
+     
+]
+
+.right-column[
+####Example API Call
+
+```json
+GET api/moti/regions
+
+[
+  {
+    "id": 200000,
+    "ministryRegionID": 1,
+    "name": "South Coast"
+  },
+  {
+    "id": 200001,
+    "ministryRegionID": 2,
+    "name": "Southern Interior"
+  },
+  {
+    "id": 200002,
+    "ministryRegionID": 3,
+    "name": "Northern"
+  }
+]
+```
+]
+---
+
 #API Testing
 
 * Make an API call
@@ -585,37 +662,51 @@ Cloud Options are becoming possible:
      * Fails the test - fix the test
 
 ---
-#Non-Functional Requirements and Testing
+##Non-Functional Requirements and Testing
 
+* System response time is acceptable
+   * Even with lots of users
+* System is secure
+* System can scale
+* System is accessible (supports users with disabilities)
+* System has a disaster recovery plan
 * System deployed properly
 * System is online
-* System response time is acceptable
-* System can scale
-* System is secure
-* System is accessible (to disabled users)
-* System has a disaster recovery plan
 
-#####Traditional - verify this as an event during development
 
-#####Pipeline - verify this continually as system evolves
+--
+#####Traditional - verify as an event during development
+--
 
-#####Monitoring - verify this continually as the system operates
+#####Pipeline - verify continually as the system evolves
+--
+
+#####Monitoring - verify continually as the system operates
 ---
 #Common Non-Functional Testing
 
 * Load Testing
-   * Commonly - API Testing from a scaled up external source
+   * Typical: Use API (or UI) Testing from a scaled up external source
      * Script of "typical interaction(s)"
-     * Tool/Service to run many instances of script - 100/500/1000, etc.
-   * Typically - still an event
-   * Once in production - real data is available - use it.
---
+     * Tool/Service runs many instances of script - 100/500/1000, etc.
+   * Usually an event to establish production baseline
+     * Once in production - monitor production
+     * However - you can be hit with a "Day After" issue
+   * In pipeline, run on non-prod environment to verify trend
+     * Is the load result the same from deploy to deploy?
+---
+#Common Non-Functional Testing
 
 * Security testing
-   * Static - analyze the code for vulnerabilities
+   * Static - analyze the code for quality and vulnerabilities
    * Static - verify libraries/versions against database of vulnerabilities
+     * "You are using node.js version v5 which has vulnerability XYZ"
+     * Like a virus checker, the vulnerability database evolves daily
+     * Must run the scanning regularly
    * Dynamic - tool runs script of known hacking techniques
+     * Call API with parmeters known to invoke vulnerabilities 
 --
+
 
 * Chaos Monkey testing
 ---
@@ -635,21 +726,24 @@ Cloud Options are becoming possible:
 #Monitoring and Responding
 
 * Monitoring usage trends:
+   * Health Check - is the application running?
    * Average response time (request, API, database)
    * Request error rate
    * Resource usage vs. capacity
+   
+--
+
+
 * Notifications of "out of range" events
    * Emails of all unexpected server errors
+
+--
 
    
 * The ops runbook
    * If .red[this] happens then do .green[that]
    * Leads to automating responses to events - no human intervention
      * e.g. Server crashed?  Automatically restart new instance
-   
-
-* Industry trend: Monitor the _service_ not the _resources_
-
 ---
 
 #The Application Health Check
@@ -658,6 +752,7 @@ Cloud Options are becoming possible:
 
 ### Deployment Pipeline
 * Is there an End-to-End .bold.green[automated] deployment pipeline?
+   * Does it include environments? Even devs?
 * Are the manual steps and governance documented?
 * How long does it take to deploy a trivial change?
 * Is there a culture of continuous improvement?
@@ -666,7 +761,7 @@ Cloud Options are becoming possible:
 
 ### Deployment Platform
 * Is there an Operations Runbook?
-* Is the platform flexible?
+* Is the platform flexible: resilient, scalable, extensible?
 * Is the platform managed?
 * How are platform events handled/escalated?
 * Is there a culture of continuous improvement?
@@ -675,14 +770,13 @@ Cloud Options are becoming possible:
 
 ### Application Independence
 * Is the application isolated from other systems?
-   * Who has to know if the system changed?
-   * What has to happen if other systems are changed?
+   * Who has to know if the system changes?
+   * What has to happen if other systems are changes?
 * Does the business own the deployment decision
 * Is there a plan for eliminating dependencies?
 ---
 
 #The Application Health Check
-
 .left-column[
 ### Manual Testing
 * Are the developers using TDD?
@@ -721,12 +815,12 @@ Cloud Options are becoming possible:
    * Response time
    * Request rate
    * Error rate
-   * Resources usage
+   * Resource usage
    
    
-* Are out of standard notifications sent out?
+* Are error event notifications sent out?
 
-* Are adequate backup/restore actions in place?
+* Are backup/restore processes in place?
 
 ]
 
@@ -734,24 +828,25 @@ Cloud Options are becoming possible:
 
 .right-column[
 
-* Are trends being monitored?<br><br>
-* Is there a .bold[verified] disaster recovery plan?
-   * e.g. What happens if the database is lost?
+* Are trends monitored?<br><br>
+* A .bold[verified] disaster recovery plan?
+   * e.g. What if the database is lost?
    
 
 * Is there an application Ops Runbook?
-   * What to do manually?
-   * Evolving to what happens automatically?
+   * What has to be done manually?
+   * Are repeatable processes being automated?
    * Is there a culture of continuous improvement?
 ]
 
 ---
 #The Application Health Check
 
-###Focus on the pain
-###Establish a culture of continuous improvement
 
-<img src="images/leanprocess.png" alt="Lean Process" width="50%" > 
+###.center[Focus on the pain]
+###.center[Establish a culture of continuous improvement]
+
+<img src="images/leanprocess.png" alt="Lean Process" width="60%" > 
 ---
 #Review
 
@@ -768,7 +863,7 @@ Cloud Options are becoming possible:
 ###What is DevOps?
 * We learned:
    * A culture of applying Lean principles to the end to end systems
-   * Reduce risk by addressing it as early as possible
+   * Reduce risk by addressing it as early as possible - "shift left"
    * Backed by lots of powerful tools - largely developed and shared in the open
    * Lab - deploying a complex Web Application - easily
 
@@ -778,10 +873,10 @@ Cloud Options are becoming possible:
 ###What is the Cloud?
 * We discovered:
    * About Data Centres
-   * All the Services (and perhaps some digressions...)
+   * All the "as a Services" (and perhaps some digressions...)
    * Options for delivering applications on platforms
    * In BC - HPAS is the main choice, but more options are coming
-   * Regardless, the underpinnings are DevOps
+   * Regardless, the underpinnings will be DevOps
      * Declare what you need - let the platform figure it out
 
 ---
