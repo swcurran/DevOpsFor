@@ -13,7 +13,7 @@ class: center, middle
 
 <img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
 
-Stephen Curran, Cloud Compass Computing, Inc.<br><font size="3"><a href="https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productownersP2.pdf" alt="PDF Version">Link to PDF Version</a></font>
+Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="http://htmlpreview.github.io/?https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productownersP2.md.html" alt="Online Version">View Online</a> &#9679; <a href="https://github.com/swcurran/DevOpsForProductOwners/raw/master/presentation/devops4productownersP2.pdf" alt="PDF Version">Download the PDF</a></font>
 
 &nbsp;
 
@@ -26,8 +26,8 @@ Stephen Curran, Cloud Compass Computing, Inc.<br><font size="3"><a href="https:/
 
 1. Review of Part 1
 2. To The Cloud: Models and Options
-3. On the Ground - Extending the Pipeline
-4. Wrapup - An Application Health Check
+3. On the Ground: Extending the Pipeline
+4. Wrapup: An Application Health Check
 ???
 http://www.liberatingstructures.com/
 ---
@@ -88,7 +88,7 @@ http://www.liberatingstructures.com/
 .left-column[
 ### Anti-Patterns
 
-* No version control
+* Little/no version control
 * Devs environments not like Prod
 * "Agile" but no DevOps
 * Cross Project Release Schedules
@@ -132,11 +132,11 @@ http://www.liberatingstructures.com/
    * Everybody says so
    * What does that mean?
 
-* Often discussed at the same time as DevOps
+   
+* Often discussed at the same time as DevOps - "Let's just run it in the Cloud"
    * What's the connection?
 
-* "Let's just run it in the Cloud"
-   * What would be the impact?
+   
 ---
 #The Building Blocks of the Cloud
 
@@ -147,7 +147,8 @@ http://www.liberatingstructures.com/
 --
 
 .left-column[
-<img src="images/Physical_vs_Virtual.PNG" alt="" width="90%" > 
+<img src="images/Physical_vs_Virtual.PNG" alt="" width="70%" > 
+.center[Physical vs. Virtual Machines (VMs)]
 ]
 
 --
@@ -202,7 +203,12 @@ http://www.liberatingstructures.com/
    * Request firewall updates - iStores
    * Configure software connections
 * Changes to compute/network? - iStores
+
+
 ]
+
+???
+Firewall config changes per app
 ---
 #The iStore Impact
 
@@ -277,7 +283,7 @@ So let's talk * as a Service - IaaS, PaaS, SaaS
    * Configuration script
    * API - programmable - this is .bold.red[HUGE]
 * Resilency - multiple regions (data centres)
-* Expertise
+* Hosting expertise - outage responses
 * Ground up design to be automated
 
 ---
@@ -344,7 +350,8 @@ name: paas
 ???
 
 Note the names on the servers - manually order, setup, connected, firewalls
-
+Vertical scaling - more horsepower
+Horizontal scaling - more machines
 ---
 # Orchestration
 
@@ -478,6 +485,7 @@ Cloud Options are becoming possible:
  * Commit a Code Changes
  * Build the Code for deployment
  * Deploy the Code
+ * Test the Deploy
  * Promote the Code
 
 ###What else can we do?
@@ -498,10 +506,12 @@ Cloud Options are becoming possible:
      * Write the code
      * Run the Tests - until they pass
      * Commit both - the code and test
-   * Created during the development process
-   * Executed during development to prevent .red[regressions]
-   * Executed during or post-build
-      * To verify the build
+   * Created during development
+   * Executed pre-commit to prevent .red[regressions]
+   * Verification during/post-build
+   * Product Owner: .green[Visibility/Transperancy]
+     * Are we adding unit tests?
+     * Are the tests passing?
    
    
 ]
@@ -513,16 +523,21 @@ Cloud Options are becoming possible:
    * Created during the development process
    * Executed post-build
      * To verify the build
+   * Can be defined using .bold.green[BDD]
+     * Behaviour-Driven Development
+     * Suite of executable user stories
+* .green[Visibility/Transperancy]
 ]
 ---
-#DevOps and Testing - Manual Testing
+#Aside: Manual Testing
 
 * Manual Testing / UAT
    * Combinations of data/unexpected activities
    * Edge conditions - short text, long text, 0s, etc.
    * UAT - Tracked test cases/executions - e.g. Zephyr within JIRA
    * Automate - Regression Tests
-
+* Use DevOps
+   * Collaboration - when/what to test
    
 --
 
@@ -536,7 +551,7 @@ Cloud Options are becoming possible:
         * Formal Usability Testing
 
 ---
-#Formal Usability Testing
+#Aside: Formal Usability Testing
 
 * "Typical users" - but not engaged in the project
 * Process:
@@ -567,7 +582,7 @@ Cloud Options are becoming possible:
 
 ---
 
-#API Testing
+#DevOps and Testing - API Testing
 
 ###What's an Application Programming Interface?
 
@@ -594,7 +609,7 @@ Cloud Options are becoming possible:
 
 .left-column[
 * The interface between the front end and back end
-   * Isoldate backend from the front-end
+   * Isolate backend from the front-end
    * One API multiple front-ends
      * Web
      * iPhone
@@ -636,22 +651,28 @@ GET api/moti/regions
 ]
 ---
 
-#API Testing
+#DevOps and Testing - API Testing
 
 * Make an API call
 * Verify ("Assert") the response is expected
    * Assertion not met - test fails
 * Easy to write - text
-   * Can even be generated
+   * Can even be generated - BDD
 * Relatively easy to maintain
    * APIs are stable, so are the tests
    * Challenge - getting consistent data
+
+--
+   
+   
+* .green[Visibility/Transperancy]
+
 ---
-#User Interface Testing
+#DevOps and Testing - User Interface Testing
 
 * Manual - easy
    * But not repeatable
-* Automated - difficult
+* Automated - tricky
    * Hard to create
    * Hard to maintain
    * True end-to-end test
@@ -662,7 +683,7 @@ GET api/moti/regions
      * Fails the test - fix the test
 
 ---
-##Non-Functional Requirements and Testing
+##DevOps and Testing - Non-Functional Requirements
 
 * System response time is acceptable
    * Even with lots of users
@@ -681,7 +702,7 @@ GET api/moti/regions
 #####Pipeline - verify continually as the system evolves
 --
 
-#####Monitoring - verify continually as the system operates
+#####.green[Monitoring] - verify continually as the system operates
 ---
 #Common Non-Functional Testing
 
@@ -691,9 +712,10 @@ GET api/moti/regions
      * Tool/Service runs many instances of script - 100/500/1000, etc.
    * Usually an event to establish production baseline
      * Once in production - monitor production
-     * However - you can be hit with a "Day After" issue
+     * However - you can still be hit with a "Day After" issue
    * In pipeline, run on non-prod environment to verify trend
-     * Is the load result the same from deploy to deploy?
+     * Is the load test result the same from deploy to deploy?
+   * .green[Visibility/Transperancy]
 ---
 #Common Non-Functional Testing
 
@@ -705,6 +727,8 @@ GET api/moti/regions
      * Must run the scanning regularly
    * Dynamic - tool runs script of known hacking techniques
      * Call API with parmeters known to invoke vulnerabilities 
+   * .green[Visibility/Transperancy]
+   
 --
 
 
@@ -730,6 +754,12 @@ GET api/moti/regions
    * Average response time (request, API, database)
    * Request error rate
    * Resource usage vs. capacity
+
+--
+
+   
+* .green[Visibility/Transperancy]
+
    
 --
 
@@ -760,11 +790,12 @@ GET api/moti/regions
 
 
 ### Deployment Platform
-* Is there an Operations Runbook?
 * Is the platform flexible: resilient, scalable, extensible?
 * Is the platform managed?
 * How are platform events handled/escalated?
 * Is there a culture of continuous improvement?
+* Is there an Operations Runbook?
+
 ---
 #The Application Health Check
 
@@ -783,7 +814,7 @@ GET api/moti/regions
 * Is there a tight develop/test relationship?
 * Is there a thorough test plan?
    * Is there a framework for tracking test runs?
-* Is load testing needed?
+* Is pre-launch production load testing needed?
    * Large user base with the potential for usage spikes
 
 ]
@@ -794,16 +825,16 @@ GET api/moti/regions
 
 ### Automated Testing
 * How much testing is included in the deployment pipeline?
-
-
    * Unit Tests
    * Integration Tests
      * API Tests
      * User Interface Tests
+     * Pre-promotion Load Testing
    * Security Scans
      * Static
      * Dynamic
    * Deployment Validation Tests
+   * .green[Visibility/Transperancy]
 ]
 ---
 #The Application Health Check
@@ -811,11 +842,12 @@ GET api/moti/regions
 ###Monitoring and Responding
 
 .left-column[
-* Is there transparent usage/performance monitoring?
+* Is there usage/performance monitoring?
    * Response time
    * Request rate
    * Error rate
    * Resource usage
+   * .green[Visibility/Transperancy]
    
    
 * Are error event notifications sent out?
@@ -844,9 +876,10 @@ GET api/moti/regions
 
 
 ###.center[Focus on the pain]
+###.center[Provide feedback: .green[Visibility/Transperancy]]
 ###.center[Establish a culture of continuous improvement]
 
-<img src="images/leanprocess.png" alt="Lean Process" width="60%" > 
+<img src="images/leanprocess.png" alt="Lean Process" width="50%" > 
 ---
 #Review
 
@@ -886,16 +919,16 @@ GET api/moti/regions
 * We learned about:
    * Extending the deployment pipeline
    * Testing types and best practices
+   * .green[Visibility/Transperancy]
    * Application health check
    
-####In one sentence: Establish a culture of continuous improvement
+#####.center[Establish a feedback-based culture of continuous improvement]
 
 <img src="images/leanprocess.png" alt="Culture of improvement" width="40%" >
 
 
 ---
-   #That's it!
-   
+   #That's it!   
    #&nbsp;
    
    #Course Feedback: https://goo.gl/6qb4yl
