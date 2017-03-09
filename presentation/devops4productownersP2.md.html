@@ -124,6 +124,17 @@ http://www.liberatingstructures.com/
 
 ]
 
+???
+
+* Editorial comment - legacy systems are considered "exempt" because of the perceived lack of tools.
+* Challenge that and see if there are things that can be done
+* When things go bad on a release - have a meeting and have someone find a better way.
+   * Better than a "better checklist"
+* What can be done to remove manual steps things? To speed things up? To make things repeatable?
+   * Verify databases - test and prod are the same - automate the checking process
+   * Verify environments - test and prod are in sync - automate the checking process
+   * All database changes are scripts - nothing manual.
+   * Runner for scripts
 ---
 
 # What is the Cloud?
@@ -477,6 +488,41 @@ Cloud Options are becoming possible:
 #Break and Lab - The Extended Pipeline
 
 ---
+count:false
+
+#Lab: Extending the pipeline
+
+###Scenario: Reliably deploying a change to Production
+
+* Repeat (ahem...) the "Awesome" lab from last week
+   * Navigate to the code repo on github
+   * Edit code
+   * Commit - and trigger a deploy
+   * Jump over to watch the deploy
+
+   
+--
+
+
+* New: The pipeline has been extended
+   * A test to make sure the deployed app is correct on Dev
+   * If the test passes - option to deploy to Prod
+
+---
+count: false
+
+#Lab: Extending the Pipeline
+
+#&nbsp;
+
+#.center[Instructions: https://goo.gl/rRqCIQ]
+
+#&nbsp;
+
+###.center[Github User ID: c3ilabuser / .red[2345abcd]]
+
+
+---
 #Extending the Pipeline
 
 ###Demonstrated pipeline
@@ -493,7 +539,6 @@ Cloud Options are becoming possible:
 * Shift left!
  * Test and Verify on every deploy
 * Monitor and learn
-
 
 ---
 #DevOps and Testing
