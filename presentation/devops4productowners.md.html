@@ -12,13 +12,12 @@ class: center, middle
 
 
 ## An OCIO Digital Literacy Course<BR>_DevOps For Product Owners_
-### &nbsp;
 
 <img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
 
-Stephen Curran, Cloud Compass Computing, Inc.
+Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="http://htmlpreview.github.io/?https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productowners.md.html" alt="Online Version">View Online</a> &#9679; <a href="https://github.com/swcurran/DevOpsForProductOwners/raw/master/presentation/devops4productowners.pdf" alt="PDF Version">Download the PDF</a></font>
 
-.footnote[This work is licensed to the public under a Creative Commons Attribution 4.0 license. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
+.center.footnote[&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This work is licensed to the public under a Creative Commons Attribution 4.0 license.<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
 
 ---
 
@@ -85,7 +84,7 @@ class:center,middle
 count:false
 class:center,middle
 
-## Why are you (not) excited about your project?
+## Why are you (not) excited about your next project?
 
 ---
 
@@ -100,15 +99,15 @@ class:center,middle
 * Please write your name
 ]
 .right-column[
-###Are you/Have you:
+###Are you/Have you been a:
 
-* the key technical player on a project?
-* the key business player on a technology project?
-* a core member of a technology project?
-* a user providing requirements/doing pre-release testing of an app?
-* used a custom government applications?
-* used Outlook, Word and Excel?
-* don't use a computer?
+* key technical player on a project?
+* key business player on a project?
+* core member of a technology project?
+* user providing needs for/testing an app?
+* user of custom government apps?
+* user Outlook, Word and Excel?
+* person that refuses to use a computer?
 ]
 
 .left-column[]
@@ -308,7 +307,7 @@ Firewall config changes per app
    * Design for the heaviest anticipated load
 
 ---
-# Making it Work - Theory
+#Dev and Ops: Making it Work - In Theory
 
 <img src="images/sdlc_waterfall_model.jpg" alt="Waterfall Design" width="65%" >
 
@@ -559,7 +558,7 @@ Open source is huge here - big companies collaborating on powerful tools
 
 # Analogous to Agile
 
-And to some extent, driven by agile...
+And to some extent, driven by Agile...
 
 &nbsp;
 
@@ -672,20 +671,19 @@ count:false
 
 #&nbsp;
 
-#.center[https://goo.gl/mU54BQ]
+#.center[https://goo.gl/hhP1zk]
 
 #&nbsp;
 
-* Github user: c3ilabs
-* Github password (shhhh....): lab-mar-02
+* Github user: c3ilabuser
+* Github password (shhhh....): 9876abcd
 
-.red[NOTE]: Passwords may have the number "1", but don't have the letters "l" or "I"
 ---
 
 # What we learned
 
 * Automated deployment is possible
-* Non-Technical people can do it
+* Non-technical people can do it
 * There are lots of moving pieces
    * Lots to do if the steps are manual
 
@@ -1043,11 +1041,11 @@ class: center, middle
 
 <img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
 
-Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="http://htmlpreview.github.io/?https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productownersP2.md.html" alt="Online Version">View Online</a> &#9679; <a href="https://github.com/swcurran/DevOpsForProductOwners/raw/master/presentation/devops4productownersP2.pdf" alt="PDF Version">Download the PDF</a></font>
+Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="http://htmlpreview.github.io/?https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productowners.md.html" alt="Online Version">View Online</a> &#9679; <a href="https://github.com/swcurran/DevOpsForProductOwners/raw/master/presentation/devops4productowners.pdf" alt="PDF Version">Download the PDF</a></font>
 
 &nbsp;
 
-.footnote[This work is licensed to the public under a Creative Commons Attribution 4.0 license. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
+.footnote[&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This work is licensed to the public under a Creative Commons Attribution 4.0 license.<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
 
 ---
 
@@ -1513,9 +1511,8 @@ count:false
 * Monitor and learn
 
 ---
-#DevOps and Testing
+#DevOps and _Automated_ Testing
 
-.left-column[
 * Unit Test - chunks of code
    * TDD - Test Driven Development
      * Write Tests
@@ -1524,27 +1521,27 @@ count:false
      * Run the Tests - until they pass
      * Commit both - the code and test
    * Created during development
-   * Executed pre-commit to prevent .red[regressions]
+   * Run pre-commit - prevent regressions
    * Verification during/post-build
    * Product Owner: .green[Visibility/Transperancy]
      * Are we adding unit tests?
      * Are the tests passing?
-   
-   
-]
---
+ 
+ 
+---
+#DevOps and _Automated_ Testing
 
-.right-column[
-* Integration Test - program units in combination
-   * Example: app server code that updates the database
-   * Created during the development process
+
+* Integration Test - units in combination
+   * Example: app code updates database
+   * Created during development
    * Executed post-build
      * To verify the build
    * Can be defined using .bold.green[BDD]
      * Behaviour-Driven Development
      * Suite of executable user stories
-* .green[Visibility/Transperancy]
-]
+* Product Owner: .green[Visibility/Transperancy]
+
 ---
 #Aside: Manual Testing
 
@@ -1552,7 +1549,7 @@ count:false
    * Combinations of data/unexpected activities
    * Edge conditions - short text, long text, 0s, etc.
    * UAT - Tracked test cases/executions - e.g. Zephyr within JIRA
-   * Automate - Regression Tests
+   * Ideal - automate them as Regression Tests
 * Use DevOps
    * Collaboration - when/what to test
    
@@ -1596,6 +1593,21 @@ count:false
   
 * Expert Review
 * A/B Testing
+
+---
+#DevOps and Testing - User Interface Testing
+
+* Manual - easy
+   * But not repeatable
+* Automated - tricky
+   * Hard to create
+   * Hard to maintain
+   * True end-to-end test
+     * The Holy Grail!
+   * When does a change mean a fail?
+   * Fixing a usability problem
+     * Intended change
+     * Fails the test - fix the test
 
 ---
 
@@ -1685,28 +1697,13 @@ GET api/moti/regions
 * .green[Visibility/Transperancy]
 
 ---
-#DevOps and Testing - User Interface Testing
-
-* Manual - easy
-   * But not repeatable
-* Automated - tricky
-   * Hard to create
-   * Hard to maintain
-   * True end-to-end test
-     * The Holy Grail!
-   * When does a change mean a fail?
-   * Fixing a usability problem
-     * Intended change
-     * Fails the test - fix the test
-
----
 ##DevOps and Testing - Non-Functional Requirements
 
 * System response time is acceptable
-   * Even with lots of users
 * System is secure
 * System can scale
 * System is accessible (supports users with disabilities)
+* System runs on all platforms (e.g. mobile, web browers, etc.)
 * System has a disaster recovery plan
 * System deployed properly
 * System is online
@@ -1953,10 +1950,9 @@ GET api/moti/regions
    
    ####References list available for those interested in learning more
 
----
     </textarea>
-    <script src="assets/remark-latest.min.js">
-    </ <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"> />
+    </ <script src="assets/remark-latest.min.js"> />
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
       var slideshow = remark.create({countIncrementalSlides: false, ratio: '16:9', highlightLines: true});
