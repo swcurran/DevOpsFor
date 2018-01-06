@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DevOps in Government</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/presentation.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+## _DevOps For Ops Teams_
+
+<img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
+
+Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="http://htmlpreview.github.io/?https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productowners.md.html" alt="Online Version">View Online</a> &#9679; <a href="https://github.com/swcurran/DevOpsForProductOwners/raw/master/presentation/devops4productowners.pdf" alt="PDF Version">Download the PDF</a></font>
+
+.center.footnote[&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This work is licensed to the public under a Creative Commons Attribution 4.0 license.<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
+
+---
+
+# DevOps For Ops Teams
+
+1. Introduction(s)
+1. Agile, Continuous Delivery and the Three Ways
+2. Applying DevOps
+3. Tooling/Automation
+4. Cross Cutting Concerns
+5. Summary/Wrap-Up
+
+---
+# Approach
+
+The course will be presented with a mixture of presentation, lab work and most importantly, discussion. Please, jump in at a time with questions, comments, suggestions, snorts, etc. The goal is the material is presented in _your_ context.
+
+--
+
+There will be a couple of labs that will allow you to say - *_I done DevOps_*
+
+--
+
+Logistics...
+--
+
+* Any constraints on time?
+* Washrooms
+* Food and beverages
+
+---
+count:false
+
+#Introduction .red[Exercise]
+
+Process:
+
+* On go - head to a corner - even number in each
+* Take turns answering a question on the screen and discuss
+* 3 minutes - end of round
+* Go to another corner and meet new people
+   * One person stays, the others go
+* Repeat x3
+
+--
+
+Trick - meet .green[EVERYONE]
+
+
+???
+http://www.liberatingstructures.com/2-impromptu-networking/
+Consider using: http://www.liberatingstructures.com/3-nine-whys/
+What is a unit of work?
+---
+count:false
+class:center,middle
+
+## Why do you love technology?
+
+---
+count:false
+class:center,middle
+
+## Why are you hindered by technology?
+
+---
+count:false
+class:center,middle
+
+## Why are you (not) excited about your next project?
+
+---
+
+#Introductions
+
+.left-column[
+#### You: Tech/Business, Both/Neither
+
+Have you been a:
+
+1. key technical player on a project?
+1. key business player on a project?
+2. core member of a technology project?
+3. requirements provider for a custom app?
+3. tester of a custom app?
+4. user of custom apps?
+5. user of Outlook, Word and Excel?
+6. person who refuses to use a computer?
+]
+
+--
+
+.right-column[
+
+#### Me:
+
+* I walk the line - business and technology
+* Agile/DevOps Development Leader/Mentor
+* DevOps since before it was DevOps - 2001, and each job since
+* Currently DevOps-driven BC Government Projects
+  * Cool One: Identity on the Internet using Blockchain
+
+]
+
+???
+
+Digital Services - Service Design, Agile
+
+* Software Development Management – Application Delivery
+* Biggest – US Federal Government HR System – Avue Central
+   * Classification, Pay Grades, Recruiting, Performance Management
+   * 2.5M Job Applications per year
+   * Entry Hiring for Dept. of Justice Lawyers, Capital Police Officers
+   * Forest Service annual Fire Hire
+   * Crazy management
+* BC Government – ICM, PMO, Courts Projects
+* Pathfinder Projects - School Bus, Hired Equipment
+* Verifiable Organizations
+
+---
+
+# What is DevOps?
+
+--
+
+DevOps (a clipped compound of "software DEVelopment" and "information technology OPerationS") is a term used to refer to a set of practices that emphasize the collaboration and communication of both software developers and information technology (IT) professionals while automating the process of software delivery and infrastructure changes. It aims at establishing a culture and environment where building, testing, and releasing software can happen rapidly, frequently, and more reliably. .red.bold[*]
+
+.footnote[.red.bold[*] Wikipedia]
+
+--
+
+###Well, that doesn't help much...
+
+???
+DevOps - not a straight forward "product"/"thing"
+* Name of a conference presentation
+* Cultural component - improving communications and shared goals
+* Lean component - continuous improvement
+* Automation and tools
+
+So lets hold off on "What is it" and go to...
+
+---
+
+# Why is DevOps?
+### Roots - merging Developers and Operations work
+
+.left-column[
+* Devs - make the code
+   * User Interface (UI/UX)
+   * Business Logic/Rules
+   * Integrations
+   * Database (usually)
+]
+--
+
+.right-column[
+* Ops - runs the code
+   * Servers
+   * Networks
+   * Databases
+]
+--
+
+
+NOTE: DevOps is Development Methodology agnostic, but Agile requires DevOps.
+---
+# Backup a bit - what's an app?
+.left-column[<img style="height:110%;"  src="images/webarchitecture.png">]
+--
+.right-column[
+
+## Examples
+* COTS
+* .NET + front end + database
+* Java + front end + database
+* MEAN (Mongo Express Angular Node)
+* Django (Python + front end + database)
+* Front End: Bootstrap, React, Backbone, Angular, etc.
+* Database: Postgres, SQL Server, Oracle, Mongo
+]
+
+--
+
+User Stories, usability, logic, rules...
+---
+
+# Where does an app run?
+.left-column[<img width="90%"  src="images/netarchitecture.png">]
+--
+.right-column[
+## Ops View
+
+* Networking zones
+* URLs - _https://myapp.gov.bc.ca_
+* Authentication - e.g. siteminder
+* Encryption - SSL
+* Firewalls
+* Servers
+* Storage
+
+]
+
+---
+# Apps map onto the Network
+.left-column[
+<img src="images/networkzones.gif" alt="Network Zones" width="60%" >
+<img src="images/netarchitecture.png" alt="Canonical Web Architecture - Ops View" width="50%" >
+]
+--
+.right-column[
+
+* Configure/secure URL - Siteminder setup
+* Procure Compute and Storage
+   * Request servers
+      * Physical Servers
+      * VMs - Virtual Machines
+      * Placement in proper Zone (VLAN)
+   * Configure Software servers
+   * Install application - when ready
+* Establish Connectivity
+   * Request firewall updates
+   * Configure software connections
+* Changes to compute/network?
+
+
+]
+
+???
+Firewall config changes per app
+---
+#Dev and Ops: Making it Work - In Theory
+
+<img src="images/sdlc_waterfall_model.jpg" alt="Waterfall Design" width="65%" >
+
+Meetings, documents, agreements and requests
+
+???
+
+Note - this is just like software development/test
+
+But this is just about deployment
+
+In government - sometimes not obvious to the developers that this needs to be done
+---
+
+# However: What Ginger Hears...
+
+--
+
+.left-column[<img src="images/WhatDevsSee.png" alt="What Devs See" width="90%" >]
+
+--
+
+.right-column[<img src="images/WhatOpsSee.png" alt="What Ops See" width="92%" >]
+
+???
+
+Not Surprising and no one's fault
+
+* Devs - 100% of functionality, end user requirements, changes
+* Ops - 100 other apps to manage, production issues
+* It's not obvious what's needed
+* It's really hard to get budget if you can define exactly the benefit
+
+---
+# Deployment
+### The rubber hits the road and...
+
+--
+
+#### &nbsp;&nbsp;&nbsp;&nbsp;...up pops *_The Wall of Confusion_*
+
+.center[<img src="images/overthewall.png" alt="Over the Wall of Confusion" height="350" >]
+
+---
+
+# What goes wrong?
+### Ineffective Communications
+
+Communication is via Word documents - the dreaded .red[_Release Guide_]
+
+* Premise: To deploy this app, do this...and this...and this...then this...
+* Assumption: The writer knows the reader's world...impossible
+
+--
+
+###Impact:
+
+* Steps are performed manually
+* On-the-fly compensations are made...further invalidating the assumption
+  * On Dev, Test and Prod
+
+???
+
+* Example - doing home PC support - remotely
+* Example - assume a piece of software is present - missing, so add it on Test.
+
+---
+
+# What goes wrong?
+###Inconsistent Environments
+
+* Developers develop in their world, deliver to a different one
+   * Each Dev creates their own development/test capability
+      * Execution environment doesn't match production
+      * Minimal test data
+   * Periodically delivers code - usually at a milestone - e.g. UAT
+     * Agile _should_ fix that
+   * Test data doesn't match production
+
+--
+
+###Impact:
+
+* It works on my machine!
+
+???
+
+* On first delivery try - may or may not work
+
+* Performance must be acceptable
+   * But volume of data not considered
+   * Options:
+      * Get the data
+      * Other mitigation strategies
+
+---
+
+# What goes wrong?
+### Unnecessary Dependencies
+
+* Inappropriate optimizations
+   * Procurement/funding optimizations: time and cost
+   * Enterprise solutions: Hammers and nails
+* Architectural approaches
+   * Monolith apps
+
+--
+
+###Impact:
+
+* Unexpected impacts on apps
+ * Updates to one app breaks an unrelated app
+* Cross-app coordination
+ * Updates to one app causes an outage to another app
+ * The Release Party: multiple LOBs involved in a release
+
+---
+
+# All of which leads to...
+
+
+--
+# Release Days
+
+.center[<img src="images/dayafter.jpg" alt="The Day After" width="75%" >]
+
+.footnote[CCredit: Twentieth Century Fox - _The Day After_]
+???
+
+* Users can't log in
+* Performance is terrible
+* A feature no longer works
+* Bugs occur
+* Non-Functional Requirements
+    * Performance
+    * Monitoring
+    * Logging
+    * Capacity
+
+A day - or several - fixing things
+
+???
+
+* Often the issues are minor and easily fixed
+* Rare that something unexpected and huge hits
+---
+# The Reflex Response
+
+* We *almost* did it right, we just need to do it .red[*better*] next time
+* Test more - take our time, check _EVERYTHING_
+
+--
+
+
+* For now, though... .red.bold[DON'T CHANGE ANYTHING!!]
+
+--
+
+
+* Except - users want more fixes/capabilities
+
+--
+
+<img src="images/WallOfConfusionChange.png" alt="The Wall of Confusion - Change" width="45%" >
+
+???
+
+* Checklists are really popular for this
+* The checklists grow continuously as more scenarios are found
+
+---
+class: center, middle
+# Discussion - real life examples
+---
+# What do we do?
+
+--
+
+.left-column[## ITIL
+
+<img src="images/ITIL-Circle.jpg" alt="ITIL Service Improvement Model" width="90%" >
+]
+
+--
+.right-column[
+* Conceptually, ITIL approach is good, but implementations tend to assume:
+   * We *almost* did it right, we just need to do it .red[*better*] next time
+   * Test more - take our time, check *EVERYTHING*
+]
+
+--
+
+.right-column[
+#### Approach:
+
+* Documents, checklists and signoffs
+
+#### Impact:
+
+* Longer release cycles, little improvement
+]
+
+???
+
+---
+# What do we do?
+
+## Enter: Agile Development Methodologies
+
+<img src="images/Scrum_diagram.png" alt="Scrum Release Cycle" width="60%" >
+
+* Agile says - release every sprint (or more often - every change)
+* If the release process doesn't change...
+
+--
+
+### &nbsp;Impossible!
+???
+In fact - can be worse - Lean Initiative at the Business level
+
+* Creates demand at the front end
+---
+
+# What do we do?
+
+## How what about applying Agile...
+--
+.left-column[#### ...to the value delivery process]
+--
+.right-column[<img src="images/AgileManifesto.jpg" alt="Agile Manifesto" width="80%" >]
+
+.footnote[.red.bold[*] The Agile Manifesto - http://agilemanifesto.org/]
+
+???
+
+* Cultural change - interactions vs. processes
+* Working software - not Release Guides
+* Customer Collaboration - is each other dev <--> ops
+* Responding to change
+
+---
+# The Phoenix Project - Gene Kim et al.
+
+### The Three Ways
+
+* The Principles of Flow
+* The Principles of Feedback
+* The Principles of Continual Learning and Experimentation
+
+<img src="images/The-Phoenix-Project.jpg" alt="The Phoenix Project Book" width="35%" >
+---
+
+# The First Way: Flow (Systems Thinking)
+
+* Purpose of the system: Flow of Value
+  * Manufacturing: Optimize inputs to outputs
+
+--
+
+<img src="images/First_Way_Flow.png" alt="The First Way: Flow" width="40%" >
+
+--
+
+* End to End Thinking - .bold[*Lean*]
+ * Global, not local, optimizations
+ * Prevent defects from flowing
+ * Watch for and eliminate bottlenecks
+
+???
+
+ Business value - nothing until product is released
+ System end to end requires a cross-functional team
+ Eliminating defects also means eliminating human steps
+
+---
+
+# The Second Way: Feedback
+
+* For end to end improvement: Feedback
+  * Communication across the team
+
+--
+
+<img src="images/Second_Way_Feedback.png" alt="The Second Way: Feedback" width="40%" >
+
+--
+
+* Enable Global Optimizations
+  * Communicate all the issues - fix them together
+  * Respond quickly, adjust processes
+  * Enable understanding of .bold[*Value*]
+
+---
+
+# The Third Way:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continual Learning and Experimentation
+
+* Theorize, Test, Evaluate
+  * Low risk, high return
+* Repeat
+
+--
+
+<img src="images/Third_Way.png" alt="The Third Way: Continual Learning and Experimentation" width="35%" >
+
+--
+
+* Beyond the minimum
+  * Faster feedback / Fast fail
+  * More reliable processes
+  * Better capabilities
+
+???
+* More components under control
+* Testing framework makes it easy to automate testing - reduces risk
+* Security becomes routine not an event
+* A-B testing allows production experimentation
+
+---
+
+# DevOps: The Three Ways
+
+* A cultural change
+  * End to end thinking - Lean
+  * Feedback (visibility and communication) across the full team
+  * Rapid, small deliveries
+
+
+--
+
+
+* And some really powerful tools...
+
+--
+<img src="images/ContinuousDeliveryBook.jpg" alt="Continuous Delivery Book" width="25%" >
+
+
+---
+
+# Applying DevOps
+
+* Getting Started: Value Streams
+* Organizational Structure
+* Work Tracking and Organization
+* Integrating Operations into Daily Work
+* Deployment Pipelines (or Lifecycles)
+* Automated Tools Landscape
+
+---
+
+# Value Streams - Mapping
+
+* Lean process
+  * Define the bounds of the process - e.g "Adding a feature to a report"
+  * Map the steps to go from inputs to delivered value
+  * Categorize steps as adding value or not
+  * Assess the quality of each step - rework generated, wait times
+  * Measure the overall time for each step
+
+* Key Metric: [Value Adding Time] / [Total Time]
+
+---
+# Value Streams - Mapping Example
+
+<img src="images/simple-value-stream-map.png" alt="Value Stream Mapping Example" width="80%" >
+---
+# Value Streams - Mapping Example
+
+<img src="images/ValueStreamMapping.jpg" alt="Value Stream Mapping Example" width="65%" >
+
+---
+# Value Streams - Mapping Example
+
+<img src="images/Map-Goes-Here.png" alt="Value Stream Mapping Example" width="80%" >
+
+---
+# Aside: My Team's Journey
+
+* Development and Ops Team
+* "Demanding", "Fickle" Management
+* Continuous releases - whether we wanted them or not
+* Poor quality software
+  * Why? Release process was - "take everything"
+
+--
+
+
+* Approach:
+  * [Map the process]
+  * Figure out what hurts the most
+  * Stop the pain
+  * Repeat
+
+--
+
+
+* Results:
+  * Release intervals dropped to daily - weekly
+  * Release time dropped to minutes
+  * Product quality went way up
+  * Value delivery cadence went way up
+---
+
+# Organizational Structure - Conway's Law
+
+.center.green[*"Any organization that designs a system will inevitably produce a design whose structure is a copy of the organization's communication structure."*]
+
+.left-column[ <img src="images/ValueStreamMapping.jpg" alt="Value Stream Mapping Example" width="90%" > ]
+
+--
+
+.right-column[
+### &nbsp;
+
+* Help Desk
+* Business Analyst Team
+* Architecture Group
+* Development Team
+* QA Team
+* Ops Team
+]
+
+???
+Also applies to code structure - e.g. UI group, middleware group, database group
+Is it the right approach?
+
+---
+
+# Organizational Structure
+
+#### When evaluating processes - be aware of Conway's Law
+
+* Should the organizational structure change to improve the process?
+* What will be the transitional impact?
+  * Avoid a mismatch of process and organization
+
+--
+
+#### Interesting trend: monolith vs. microservices / big vs. small teams
+
+* Study of comparable Open Source projects found Conway's Law applied
+* Key driver/result was desire/need to remove dependencies
+
+???
+Picture - Monolith vs. Microservices -
+---
+# Work Tracking and Organization (aka JIRA)
+
+## Key continuous improvement enabler
+
+* Awareness of what you are doing / Visibility
+  * No Excel!
+  * No Email!
+
+--
+
+
+* Measurement of activities - facts behind estimates
+
+--
+
+* Feedback to all involved
+
+--
+
+* When tied to version control - "free" documentation
+
+--
+
+### Don't overthink it (overtrack) but don't underthink it either.
+
+???
+* Every field needs to EARN the right to be on the form
+
+---
+# Kanban Board and Metrics
+
+.left-column[
+<img src="images/KanbanBoard.png" alt="Kanban Board" width="90%" >
+
+Control:
+
+* Work in Progress (WIP)
+]
+
+--
+.left-column[
+
+### Cumulative Flow Diagram
+
+<img src="images/CFD-Kanban.png" alt="Cumulative Flow Diagram" width="95%" >
+
+Metrics Mechanism:
+
+* Work in Progress
+* Average Throughput
+* Average Lead Time
+
+]
+
+### .center[Experiment and Monitor Metrics]
+
+---
+
+# Integration with Version Control
+
+* Trace from business change (Issue Tracking) to code change
+
+<img src="images/jira-github-integration.png" alt="JIRA github integration" width="50%" >
+
+* Trace from code change to business change
+
+---
+# Integrating Operations into Daily Work
+
+
+---
+# Deployment Pipelines (or Lifecycles)
+
+### Replacing the Release Guide with Automation
+
+.left-column[
+* Multiple layers
+  * Application Build
+  * Application Verification
+      * Application Functionality
+      * Application Security
+  * Application Deployment
+  * Configuration as Code - "Pets vs. Cattle"
+]
+
+.right-column[
+<img src="images/Pets-Cattle-2.png" alt="Pets vs. Cattle" width="70%" >
+]
+---
+# Deployment Pipeline
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="70%" >
+
+.left-column[
+* Reliable - no human errors
+* Fast - little or (ideally) no downtime
+* Evolving - 80-20 Rule
+* Evolving - added value
+]
+--
+
+.right-column[
+* Other Ops opportunities
+  * "RunBook" to Scripts
+    * Documentation to Scripts
+]
+---
+# Automated Tools Landscape
+
+???
+Codify the work
+Automate that
+--
+<img src="images/XebiaLabsPeriodicTableDevOps.png" alt="Periodic Table of DevOps" width="85%" >
+
+.footnote[Credit - Xebia Labs - https://xebialabs.com/periodic-table-of-devops-tools/]
+
+???
+Exercise - tools to address a section of the value stream
+EXERCISE - Kanban board design - columns, WIP limits, distributing work
+EXERCISE - Org Structure of their team - impact
+EXERCISE - What could you shift left in value stream?
+---
+# Enabling Factors
+
+## Open Source
+
+* Old Way:
+  * Pay and Trust Tools Vendor (e.g. Oracle, Rational, etc.)
+  * Closed garden
+* New Way:
+  * Build what your company needs
+  * Release the source code
+  * Gain from the community involvement
+* Key contributors
+  * Google, Facebook, Twitter, etc., etc.
+
+Results? Dynamic environment, use-case driven
+---
+# Enabling Factors
+
+## API - Application Programming Interfaces
+
+* Integration possiblities
+  * Continuous Integration (CI) / plugins
+  * Integration across tools - Issue Tracking / github / CI
+* Automation possibilities
+  * Amazon Web Services - auto-deployment, auto-scaling
+
+???
+Transcribing
+Enterprise Tools - tools in isolation -
+Enables best of breed - vs. monolith solution e.g. Rational
+--
+
+## Cloud Services
+
+* Outsource non-core activities
+* Automation
+* Evolving to give Cloud capabilities on or off premise
+
+---
+# Key Tools - Infrastructure as Code
+
+--
+.left-column[
+* Configurable/Provisioning:
+  * Servers - Ansible, Chef, Puppet
+  * VMs - Vagrant
+  * Containers - Docker
+  * Container Orchestration - Kubernetes
+
+* In general:
+  * What you want, not how
+  * Format: YAML or JSON
+  * Command Line to execute
+      * Or to use in a script
+]
+
+.right-column[
+Sample Ansible Playbook - Web Server
+```yaml
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+    notify:
+    - restart apache
+  - name: ensure apache is running (and enable it at boot)
+    service: name=httpd state=started enabled=yes
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
+```
+]
+
+---
+# Aside: Containers and Orchestration
+
+.left-column[<img src="images/docker1.png" alt="Docker" width="100%" >]
+.right-column[
+#### Container Benefits
+
+* Isolation - _feels like a whole computer_
+* Lightweight - many per host
+* Create once, run everywhere
+   * Run .bold.green[same] container dev and prod
+   * Drastic reduction in shared dependencies
+
+#### But...
+
+* New and evolving quickly
+* Complex to manage at scale
+* True use...as building blocks
+]
+---
+# Aside: Containers and Orchestration
+
+.left-column[
+```yaml
+lb:
+  image: dockercloud/haproxy
+  autorestart: always
+  links:
+    - web
+  ports:
+    - "80:80"
+web:
+  image: dockercloud/quickstart-python
+  autorestart: always
+  deploy_strategy: rolling
+  links:
+    - redis
+  environment:
+    - NAME=Friendly Users
+  deployment_strategy: high_availability
+  target_num_containers: 4
+redis:
+  image: redis
+  autorestart: always
+  deploy_strategy: rolling
+  environment:
+    - REDIS_PASS=password
+```
+]
+
+.right-column[<img src="images/orchestration.png" alt="Kubernetes Orchestration" width="100%" >]
+---
+# Continuous Integration/Deployment
+
+### Version Control - git, github
+### Scripting - Documents (boo!), Shell, Rundeck
+### Continuous Integration - Jenkins (job runner)
+### Release Management - XL Release
+### Database Change Management - Datical, Liquibase
+
+---
+# Collaboration
+
+### Version Control - git
+### Issue Tracking - JIRA
+### Chat, ChatOps - Slack
+### Script Management - RunDeck
+
+---
+* Old/Miserable: Write it in Word - every step (example: ICM)
+
+<img src="images/ReleaseGuideTOC.png" alt="Release Guide Table of Contents" width="45%" >
+
+--
+
+* Better: Write it as a repeatable script
+   * Not easy - done incrementally - by lazy programmers
+   * ...in isolation
+
+--
+
+
+* Even Better: Create and share tools to improve each step
+
+???
+
+Example - ICM - 24-48 hours of orchestrated activities - 10 people in a room
+Common - developers best effort
+
+WARNING: COTS Software - especially from early 2000s
+---
+name: pipeline
+
+# Solution: The Deployment Pipeline
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="80%" >
+
+* Subversion, git, github - manage code
+* Maven, grunt - build tools
+* xUnit - unit test tools
+* Selenium, Jmeter - integration test tools
+* Migrations, Datical, E-F - database upgrades
+* Jenkins - Continuous Integration, job runner
+
+
+* Connected via triggers
+
+---
+#Lab - Deploying an App
+
+.bold[Scenario] To Do Web App
+
+* Version control - github
+* Architecture - typical Web App
+
+.bold[Task] Deploy Application
+
+---
+count:false
+#Scenario: The Day After Emergency
+
+You launched a brand new To Do app for your organization last night.
+
+* http://lab-student1-lab.apps.cloudcompass.ca/#!/
+
+Went to bed really happy - everyone liked it.
+
+--
+
+Got up this morning.  The DM called - the Minister says the app is .red[sad].  Too .red[sad].
+
+It needs to be .green.bold[AWESOME]!!
+
+* Change the title
+* Change the wording in the text box
+
+##Hurry!!!
+
+---
+count:false
+#Old way -
+
+* A real release will take all day, so...
+* Get on production and FIX IT!
+
+--
+count:false
+
+#The DevOps way
+
+* The processes are in place
+* The change is easy, and easy to test
+* Do a release.  The .green[right] way.
+
+---
+count:false
+
+##Instructions:
+
+#&nbsp;
+
+#.center[https://goo.gl/hhP1zk]
+
+#&nbsp;
+
+* Github user: c3ilabuser
+* Github password (shhhh....): 9876abcd
+
+---
+
+# What we learned
+
+* Automated deployment is possible
+* Non-technical people can do it
+* There are lots of moving pieces
+   * Lots to do if the steps are manual
+
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="45%" >
+--
+
+### What we glossed over...
+
+* Setup - Developer and Environments
+* Testing
+* Promotions - going to Test and Production
+* Documentation
+
+???
+
+Most - inherent and documented in the process
+Integrations - Siteminder, APIs within the government
+Documentation - Issue Tracking, Wiki/Confluence
+Documentation - Automatic - side effect of the process
+---
+
+count:false
+template: pipeline
+
+???
+
+Back to challenges and solutions
+---
+
+# Cross Cutting Concerns
+--
+
+### Traditional:  Testing V
+<img src="images/traditional_v.png" alt="Traditional V Testing" width="59%" >
+
+???
+
+* Unit Testing
+* Integration Testing
+* Systems Integration Testing
+* System Testing
+* Acceptance Testing
+* Operational Testing - does it work live?
+
+---
+# Solution: _Shift Left_
+
+
+### Solution: Test (and deploy) Early and Often
+
+<img src="images/Agile_DevOps_Shift_Left_Testing.jpg" alt="Shift Left - Agile and DevOps" width="60%" >
+
+???
+
+The first production deploy should NEVER be the day before go live!!!
+Verification of standards - database, security, look and feel, etc., etc.
+
+???
+
+* Continuous Integration
+   * Example: PCSS - 250 Releases in < 3 years - about once  weeks
+   * Example: CCSS, School Bus - deployment well before production, usage
+   * Non-functional requirements - real data in real production - controlled
+   * Benefit - users see the data in THEIR context - not test data
+
+Risk Mitigation
+
+---
+# Problem: Fixes in Production
+
+### Solution: Really Fast Releases
+
+--
+
+.right-column[<img src="images/lessthan30minutes.png" alt="Less than 30 minute releases" width="65%" >]
+
+.left-column[
+
+Done _properly_ - aka "Roll-forward"
+
+1. **Issue found**
+2. Issue documented - e.g. JIRA entered
+3. **Issue investigated**
+4. Issue fixed, checked in
+5. Build / Deploy
+6. Verify fix
+7. Deploy to Test
+8. Verify
+9. Deploy To **Production**...phewwww!!!
+
+]
+
+???
+
+Traditional approach - 1, 3, and fix in production
+
+---
+
+# Problem: Releases are Risky
+
+### Solution: Frequent, Small Releases
+
+--
+
+<img src="images/ReleasePainSpiral.png" alt="Release pain spiral" width="35%" >
+
+.footnote[Credit: Spotify Engineering Culture - https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/]
+
+####Big Release - Big Risk - many things to break - hard to fix<br>Small Release - Small Risk - only a few things to break - easy to fix
+
+???
+
+* Spotify!!!
+
+* This applies to Dev (every change), Test (regularly) and Prod (when Business wants)
+* Planning out a release - all the things to include vs. Facebook releases
+* ICM vs. CCD
+* Launching of a Rocket vs. Driving to work - adapt
+
+---
+
+# Problem: Unnecessary Dependencies
+
+--
+
+### Solution: Stop it!!
+
+--
+
+.right-column[<img src="images/DecoupledReleases.png" alt="Decoupled Releases" width="100%" >]
+.left-column[]
+
+--
+
+Fake Dependencies
+
+* Enterprise Release Scheduling - don't!!
+* Eliminate artificial deadlines
+* Dependencies on people
+* Dependencies on products/licenses
+
+--
+
+Architectural Dependencies
+
+* Isolate apps / parts of apps
+   * Different servers ($$$)
+   * Docker, etc.
+* Don't share databases
+   * But don't duplicate data - use APIs
+
+---
+
+# So...what is DevOps?
+
+* A culture of continuous improvement as it relates to the _end to end_ delivery of systems
+* ...supported by a growing (and standardizing) set of automation tools
+
+--
+
+.right-column[<img src="images/The-Phoenix-Project.jpg" alt="Decoupled Releases" width="80%" >]
+.left-column[]
+
+--
+
+### The Three Ways
+* Systems Thinking
+   * Focus on impacts to the _entire_ system
+* Create Feedback Loops
+   * Verify your assumptions/theories
+* Continual Experimentation and Learning
+
+---
+
+# Are we doing DevOps??
+
+.left-column[
+### Anti-Patterns
+
+* Little/no version control
+* Devs environments not like Prod
+* "Agile" but no DevOps
+* Cross Project Release Schedules
+* Many manual steps (Release guide)
+* Post-deployment fixes without Deploys
+* Multi-app Release Party Email Chains
+* Server Names - pets (vs. _Services_)
+* Test Date = Start UAT Date - 1 Day
+* Production Date = Go Live Date - 1 Day
+
+]
+
+--
+.right-column[
+### Patterns
+
+* Version control for everything
+* Devs world ~= Prod
+* Many, many, many deployments
+   * Support Agile
+   * Automatic deploy to Dev
+   * Triggered deploy to Test, Prod
+   * No manual steps - _database_
+* Early and often to test, prod
+* Automatic feedback and notifications
+* App independence
+
+]
+
+???
+
+* Editorial comment - legacy systems are considered "exempt" because of the perceived lack of tools.
+* Challenge that and see if there are things that can be done
+* When things go bad on a release - have a meeting and have someone find a better way.
+   * Better than a "better checklist"
+* What can be done to remove manual steps things? To speed things up? To make things repeatable?
+   * Verify databases - test and prod are the same - automate the checking process
+   * Verify environments - test and prod are in sync - automate the checking process
+   * All database changes are scripts - nothing manual.
+   * Runner for scripts
+
+# Summary
+
+.left-column[
+* Architecture
+* Developing/Managing Code
+  * Version Control
+    * Github
+    * Open Source
+  * Issue Tracking
+
+
+* Environments
+  * Servers
+  * Networks
+  * Storage
+  * Security
+]
+
+.right-column[
+* Continuous Integration / Continuous Delivery (CI/CD)
+  * Build
+  * Test
+  * Deploy
+  * Verify
+  * Monitor
+
+
+* Visualizing it all
+]
+
+&nbsp;&nbsp;
+
+&nbsp;&nbsp;
+
+&nbsp;&nbsp;
+
+???
+
+Side note - many big companies do devops as a means not an end
+As such - willing to share - and get contributions from others - e.g. google, netflix, etsy, docker, etc.
+---
+
+# What is the Cloud?
+
+* The "Cloud" is the promise of the future
+   * Everybody says so
+   * What does that mean?
+* Often discussed at the same time as DevOps - "Let's just run it in the Cloud"
+   * What's the connection?
+
+
+<img src="images/GoogleDataCentre.png" alt="Data Center" width="55%" >
+
+
+---
+# The Cloud Models: * as a Service
+
+Once you aren't using your computer for computing purposes - you are using the Cloud
+
+* Dropbox / Google Drive - File Storage Service
+* Office 365 / Google Docs - Office Editing Service
+* Netflix / CraveTV - Video Entertainment Service
+* Sharepoint / Shared Drives - Business Storage
+
+Since all gov't apps aren't on our computers - they are by definition "in the Cloud"
+
+So let's talk * as a Service - IaaS, PaaS, SaaS (but not much about SaaS)
+---
+# The Cloud Models: * as a Service
+--
+
+<img src="images/pizza.jpg" alt="Pizza as a Service" width="65%" >
+
+---
+# On-Premise, IaaS, PaaS, SaaS
+
+<img src="images/cloud.png" alt="Everything as a Service" width="90%" >
+
+---
+# Cloud Service Providers
+
+* HPAS - BC Government Data Centre
+* Amazon Web Services (AWS)
+* Microsoft Azure
+* Salesforce
+* Others - IBM, Digital Ocean, etc.
+
+---
+
+# HPAS Services / BC Gov't Data Centres
+
+.right-column[<img src="images/cloud-OnPremise.png" alt="On Premise Infrastructure" width="40%" >]
+
+.left-column[]
+
+* On-premise-ish, with iStore orders
+* Physical and VM servers
+* Networking via VLANs and Firewall changes
+* Standard images - Windows, Linux
+* Standard software - e.g. Oracle, .NET
+* No containers (Docker)
+* Extra services - patching, monitoring
+* Backups and restores
+* .red[New!] IaaS-ish Offering
+* .red[New!] PaaS Offering - Red Hat's OpenShift
+
+---
+
+# IaaS .bold.red[*] AWS (Amazon), Azure
+.footnote[.bold.red[*] And a lot more services...]
+
+.right-column[<img src="images/cloud-IaaS.png" alt="Infrastructure as a Service" width="50%" >]
+
+.left-column[]
+
+* Now in Canada
+* Procurement: website, credit card
+* By use billing - minute and gigabyte
+* Spin up servers, configure storage/network
+   * Website
+   * Configuration script
+   * API - programmable - this is .bold.red[HUGE]
+* Resilency - multiple regions (data centres)
+* Hosting expertise - outage responses
+* Ground up design to be automated
+
+---
+## PaaS: HPAS OpenShift, AWS, Azure, Salesforce
+
+.right-column[<img src="images/cloud-PaaS.png" alt="Platform as a Service" width="50%" >]
+
+.left-column[]
+
+* Declarative needs - concise
+* Dynamic setup and configuration
+   * Spin up app components
+   * Software Defined Network (SDN)
+   * True cattle - die (and get replaced)
+   * Cattle are less stable - that's Ok
+* New technologies
+   * Containers (Docker and others)
+   * Orchestration (Kubernetes and others)
+
+---
+## PaaS: HPAS OpenShift, AWS, Azure, Salesforce
+
+.right-column[<img src="images/cloud-PaaS.png" alt="Platform as a Service" width="30%" >]
+
+.left-column[]
+
+* Declarative needs - concise
+* Dynamic setup and configuration
+   * Spin up app components
+   * Software Defined Network (SDN)
+   * True cattle - die (and get replaced)
+   * Cattle are less stable - that's Ok
+* New technologies
+   * Containers (Docker and others)
+   * Orchestration (Kubernetes and others)
+
+
+--
+
+.left-column[
+#### Devs dream
+
+* Create code
+* Declare configuration, evolve it easily
+* Deploy easily
+]
+
+--
+
+.right-column[
+#### Challenges
+
+* New technologies
+* New techniques
+* For now: Open Source only
+]
+---
+# SaaS: Office 365, Salesforce CRM
+
+* End users login, use the services
+* Some integration with the Enterprise - Single-Sign On (SSO)
+
+### Salesforce - also a PaaS
+
+* Roots as SaaS - Sales automation system
+* Coming to Canada - running on AWS Canada instance
+* Has evolved into a PaaS - .bold[Force.com]
+   * Heavy on the "configure" model vs. code - especially the backend
+   * Option to build custom frontend talking to Force.com
+
+BC Gov't Salesforce deployments (MTICS, MSDSI, JAG) but have been challenging
+
+* Data Centres in the US - so no personal information
+   * Informational apps - no stored data
+   * Data Residency handling for personal information
+---
+
+# * as a Service Options for Business
+
+Government hosted services are (sort of) easy
+
+* Traditional - with iStores and a DIY-attitude - you are on your way
+* IaaS - with a DIY-attitude - you are on your way
+* PaaS - with an I-want-to-learn-attitude - you are on your way
+
+Cloud Options are becoming possible:
+
+* Azure, AWS IaaS are in Canada
+* Azure and AWS - many other services
+* Cloud BC option is coming
+* Salesforce will soon be in Canada - on AWS
+* Concern is governance - where are all the apps, where is the data?
+
+???
+* Question: Where is the data?  Kamloops data centre
+* If we go to the cloud - how is that answered?
+---
+
+#Cloud Summary and Directions
+
+###Four major Cloud models - On-Premise and I, P and S aaS
+
+* HPAS supports (mostly) On-Premise, also IaaS and PaaS (Red Hat OpenShift)
+
+--
+
+
+* New public cloud options are coming - but not easily obtained
+   * Cloud BC could enable those options
+   * Potential: Private/Public Cloud - capabilities extend to use Azure/AWS resources
+
+--
+
+
+* Direction is towards PaaS - user expectations will require PaaS/Orchestration
+   * Robustness
+   * Capacity, Density, Isolation
+   * Scalability
+   * Ease of Deployment/Management
+
+---
+#DevOps and _Automated_ Testing
+
+* Unit Test - chunks of code
+   * TDD - Test Driven Development
+     * Write Tests
+     * Run the Tests - fail
+     * Write the code
+     * Run the Tests - until they pass
+     * Commit both - the code and test
+   * Created during development
+   * Run pre-commit - prevent regressions
+   * Verification during/post-build
+   * Product Owner: .green[Visibility/Transperancy]
+     * Are we adding unit tests?
+     * Are the tests passing?
+
+
+---
+#DevOps and _Automated_ Testing
+
+
+* Integration Test - units in combination
+   * Example: app code updates database
+   * Created during development
+   * Executed post-build
+     * To verify the build
+   * Can be defined using .bold.green[BDD]
+     * Behaviour-Driven Development
+     * Suite of executable user stories
+* Product Owner: .green[Visibility/Transperancy]
+
+---
+#Aside: Manual Testing
+
+* Manual Testing / UAT
+   * Combinations of data/unexpected activities
+   * Edge conditions - short text, long text, 0s, etc.
+   * UAT - Tracked test cases/executions - e.g. Zephyr within JIRA
+   * Ideal - automate them as Regression Tests
+* Use DevOps
+   * Collaboration - when/what to test
+
+--
+
+
+  * Usability Testing
+     * Does it meet the business need?
+     * Is it easy to use?
+     * Types:
+        * Product Owner + Developer - during development
+        * Hallway testing
+        * Formal Usability Testing
+
+---
+#Aside: Formal Usability Testing
+
+* "Typical users" - but not engaged in the project
+* Process:
+  * Brief Introduction
+  * Assign business tasks to be completed
+  * Watch, take notes - don't help!
+
+--
+
+
+* What is easy?
+* Where do they struggle?
+
+--
+
+
+* Decisions:
+  * Easy to change? Fix
+  * Easy to understand after a one-time explanation? Leave
+  * Will require training
+     * Trade off: cost to fix once vs. cost to train everyone
+
+--
+
+
+* Expert Review
+* A/B Testing
+
+---
+#DevOps and Testing - User Interface Testing
+
+* Manual - easy
+   * But not repeatable
+* Automated - tricky
+   * Hard to create
+   * Hard to maintain
+   * True end-to-end test
+     * The Holy Grail!
+   * When does a change mean a fail?
+   * Fixing a usability problem
+     * Intended change
+     * Fails the test - fix the test
+
+---
+
+#DevOps and Testing - API Testing
+
+###What's an Application Programming Interface?
+
+<img src="images/apiexample.jpg" alt="API Example" width="70%" >
+
+--
+
+.left-column[
+* Turn a resource into a service
+   * Contract - Set of calls, responses
+   * Backend changes? OK - keep the API
+   * System independence - isolation
+]
+
+.right-column[
+* Protect the resource
+   * Authentication/Authorization
+   * Volume-limiter
+   * Logging/Auditing
+]
+
+---
+#APIs in Modern Apps
+
+.left-column[
+* The interface between the front end and back end
+   * Isolate backend from the front-end
+   * One API multiple front-ends
+     * Web
+     * iPhone
+     * Android
+* An interface for other applications
+   * Define the service - API
+   * Expose the service for others
+     * Bus Schedules/Locations
+     * Court Lists
+     * Access to legacy system e.g. ICBC
+     * Manage Outlook appointments
+
+]
+
+.right-column[
+####Example API Call
+
+```json
+GET api/moti/regions
+
+[
+  {
+    "id": 200000,
+    "ministryRegionID": 1,
+    "name": "South Coast"
+  },
+  {
+    "id": 200001,
+    "ministryRegionID": 2,
+    "name": "Southern Interior"
+  },
+  {
+    "id": 200002,
+    "ministryRegionID": 3,
+    "name": "Northern"
+  }
+]
+```
+]
+---
+
+#DevOps and Testing - API Testing
+
+* Make an API call
+* Verify ("Assert") the response is expected
+   * Assertion not met - test fails
+* Easy to write - text
+   * Can even be generated - BDD
+* Relatively easy to maintain
+   * APIs are stable, so are the tests
+   * Challenge - getting consistent data
+
+--
+
+
+* .green[Visibility/Transperancy]
+
+---
+##DevOps and Testing - Non-Functional Requirements
+
+* System response time is acceptable
+* System is secure
+* System can scale
+* System is accessible (supports users with disabilities)
+* System runs on all platforms (e.g. mobile, web browers, etc.)
+* System has a disaster recovery plan
+* System deployed properly
+* System is online
+
+
+--
+#####Traditional - verify as an event during development
+--
+
+#####Pipeline - verify continually as the system evolves
+--
+
+#####.green[Monitoring] - verify continually as the system operates
+---
+#Common Non-Functional Testing
+
+* Load Testing
+   * Typical: Use API (or UI) Testing from a scaled up external source
+     * Script of "typical interaction(s)"
+     * Tool/Service runs many instances of script - 100/500/1000, etc.
+   * Usually an event to establish production baseline
+     * Once in production - monitor production
+     * However - you can still be hit with a "Day After" issue
+   * In pipeline, run on non-prod environment to verify trend
+     * Is the load test result the same from deploy to deploy?
+   * .green[Visibility/Transperancy]
+---
+#Common Non-Functional Testing
+
+* Security testing
+   * Static - analyze the code for quality and vulnerabilities
+   * Static - verify libraries/versions against database of vulnerabilities
+     * "You are using node.js version v5 which has vulnerability XYZ"
+     * Like a virus checker, the vulnerability database evolves daily
+     * Must run the scanning regularly
+   * Dynamic - tool runs script of known hacking techniques
+     * Call API with parmeters known to invoke vulnerabilities
+   * .green[Visibility/Transperancy]
+
+--
+
+
+* Chaos Monkey testing
+---
+#Monitoring your system in Production
+
+###Your Application doesn't end with the launch
+
+--
+
+####Google's Golden Signals
+
+* Latency - response time for requests
+* Traffic - current activity on the system (requests/second)
+* Errors - rate of requests that fail
+* Saturation - current capacity available (CPU, memory, etc.)
+---
+#Monitoring and Responding
+
+* Monitoring usage trends:
+   * Health Check - is the application running?
+   * Average response time (request, API, database)
+   * Request error rate
+   * Resource usage vs. capacity
+
+--
+
+
+* .green[Visibility/Transperancy]
+
+
+--
+
+
+* Notifications of "out of range" events
+   * Emails of all unexpected server errors
+
+--
+
+
+* The ops runbook
+   * If .red[this] happens then do .green[that]
+   * Leads to automating responses to events - no human intervention
+     * e.g. Server crashed?  Automatically restart new instance
+---
+
+#The Application Health Check
+
+--
+
+### Deployment Pipeline
+* Is there an End-to-End .bold.green[automated] deployment pipeline?
+   * Does it include environments? Even devs?
+* Are the manual steps and governance documented?
+* How long does it take to deploy a trivial change?
+* Is there a culture of continuous improvement?
+--
+
+
+### Deployment Platform
+* Is the platform flexible: resilient, scalable, extensible?
+* Is the platform managed?
+* How are platform events handled/escalated?
+* Is there a culture of continuous improvement?
+* Is there an Operations Runbook?
+
+---
+#The Application Health Check
+
+### Application Independence
+* Is the application isolated from other systems?
+   * Who has to know if the system changes?
+   * What has to happen if other systems are changes?
+* Does the business own the deployment decision
+* Is there a plan for eliminating dependencies?
+---
+
+#The Application Health Check
+.left-column[
+### Manual Testing
+* Are the developers using TDD?
+* Is there a tight develop/test relationship?
+* Is there a thorough test plan?
+   * Is there a framework for tracking test runs?
+* Is pre-launch production load testing needed?
+   * Large user base with the potential for usage spikes
+
+]
+
+--
+
+.right-column[
+
+### Automated Testing
+* How much testing is included in the deployment pipeline?
+   * Unit Tests
+   * Integration Tests
+     * API Tests
+     * User Interface Tests
+     * Pre-promotion Load Testing
+   * Security Scans
+     * Static
+     * Dynamic
+   * Deployment Validation Tests
+   * .green[Visibility/Transperancy]
+]
+---
+#The Application Health Check
+
+###Monitoring and Responding
+
+.left-column[
+* Is there usage/performance monitoring?
+   * Response time
+   * Request rate
+   * Error rate
+   * Resource usage
+   * .green[Visibility/Transperancy]
+
+
+* Are error event notifications sent out?
+
+* Are backup/restore processes in place?
+
+]
+
+--
+
+.right-column[
+
+* Are trends monitored?<br><br>
+* A .bold[verified] disaster recovery plan?
+   * e.g. What if the database is lost?
+
+
+* Is there an application Ops Runbook?
+   * What has to be done manually?
+   * Are repeatable processes being automated?
+   * Is there a culture of continuous improvement?
+]
+
+---
+#The Application Health Check
+
+
+###.center[Focus on the pain]
+###.center[Provide feedback: .green[Visibility/Transperancy]]
+###.center[Establish a culture of continuous improvement]
+
+<img src="images/leanprocess.png" alt="Lean Process" width="50%" >
+---
+# Summary
+
+###Why is DevOps?
+* We looked at:
+   * Complexity in deploying applications using documentation and manual processes
+   * Application Architecture
+   * Why traditional approaches are hard for Devs and Ops
+
+--
+
+###What is DevOps?
+* We learned:
+   * A culture of applying Lean principles to the end to end systems
+     * The Three Ways
+        * Flow
+        * Feedback
+        * Continuous Learning and Experimentation
+   * Reduce risk by addressing it as early as possible - "shift left"
+   * Backed by lots of powerful tools - largely developed and shared in the open
+
+---
+#Review
+
+###What is the Cloud?
+* We discovered:
+   * About Data Centres
+   * All the "as a Services" (and perhaps some digressions...)
+   * Options for delivering applications on platforms
+   * In BC - HPAS is the main choice, but more options are coming
+   * Regardless, the underpinnings will be DevOps
+     * Declare what you need - let the platform figure it out
+
+---
+#Review
+
+###What happens on the ground?
+* We learned about:
+   * Extending the deployment pipeline
+   * Testing types and best practices
+   * .green[Visibility/Transperancy]
+   * Application health check
+
+#####.center[Establish a feedback-based culture of continuous improvement]
+
+<img src="images/leanprocess.png" alt="Culture of improvement" width="40%" >
+
+
+---
+   #That's it!
+   #&nbsp;
+
+   #Course Feedback: https://goo.gl/6qb4yl
+   #&nbsp;
+
+   ####References list available for those interested in learning more
+
+    </textarea>
+    <script src="assets/remark-latest.min.js">
+    </ <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"> />
+    </script>
+    <script>
+      var slideshow = remark.create({countIncrementalSlides: false, ratio: '16:9', highlightLines: true});
+    </script>
+  </body>
+</html>

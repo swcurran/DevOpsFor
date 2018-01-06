@@ -36,7 +36,7 @@ Need Agile Concepts Training?  Contact **info@cloudcompass.ca** for help.
 - Relevant Tools:
   - Build CI/CD, Release Management, Work Tracking, Provisioning, Configuration Management, Collaboration/Communication
 
-## DevOps Cross Cutting Concerns:
+## Cross Cutting Concerns
 - Concept: Shift Left
 - QA/Testing
 - Security
