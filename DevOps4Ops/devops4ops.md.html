@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DevOps in Government</title>
+    <title>DevOps for Ops Teams</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="assets/presentation.css">
   </head>
@@ -15,7 +15,7 @@ class: center, middle
 
 <img src="images/cc_logo_final_blue_rgb.jpg" alt="Cloud Compass Computing, Inc." width="25%" >
 
-Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="http://htmlpreview.github.io/?https://github.com/swcurran/DevOpsForProductOwners/blob/master/presentation/devops4productowners.md.html" alt="Online Version">View Online</a> &#9679; <a href="https://github.com/swcurran/DevOpsForProductOwners/raw/master/presentation/devops4productowners.pdf" alt="PDF Version">Download the PDF</a></font>
+Stephen Curran, Cloud Compass Computing, Inc.<br><font size="2"><a href="https://github.com/swcurran/DevOpsFor" alt="github Repo">View it on github</a> &#9679; <a href="https://github.com/swcurran/DevOpsFor/raw/master/DevOps4Ops/devops4ops.pdf" alt="PDF Version">Download the PDF</a></font>
 
 .center.footnote[&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This work is licensed to the public under a Creative Commons Attribution 4.0 license.<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.]
 
@@ -56,7 +56,7 @@ Logistics...
 * Any constraints on time?
 * Anything else to mention?
 
----
+???
 count:false
 
 # Get Started Exercise
@@ -67,33 +67,47 @@ Consider using: http://www.liberatingstructures.com/3-nine-whys/
 What is a unit of work?
 ---
 
-#Introductions
+#Introductions: You
 
-.left-column[
-#### You:
-
-<img style="width:90%;"  src="images/TopicFamiliarityScale.png" alt="Topic Familiarity Scale">
+<img style="width:55%;"  src="images/TopicFamiliarityScale.png" alt="Topic Familiarity Scale">
 
 * Operations
-* IT projects
-* Release Management
-* Service Delivery
-* DevOps
-]
 --
 
-.right-column[
+* Development
+--
 
-#### Me:
+* ITIL
+--
+
+* Release Management
+--
+
+* Virtualization
+--
+
+* Containers/Docker
+--
+
+* Lean
+--
+
+* Shift Left
+--
+
+* DevOps
+---
+
+#Introductions:  Me
 
 * I walk the line - business and technology
-* Agile/DevOps Development Leader
+* Agile/DevOps Development leader
 * DevOps before DevOps - 2001
-* Currently BC Government Projects
-  * Internet Identity w/Blockchain
+* Helping build the BC Gov Continuous Service Innovation Lab
+* Currently working on a variety of BC Government Projects
+  * Coolest: Internet Identity using Blockchain
 
-<img style="width:50%;"  src="images/NobodyKnowsADog.jpg" alt="Nobody Knows You're a Dog">
-]
+<img style="width:30%;"  src="images/NobodyKnowsADog.jpg" alt="Nobody Knows You're a Dog">
 
 ???
 
@@ -139,11 +153,13 @@ So lets hold off on "What is it" and go to...
 ### Roots - merging Developers and Operations work
 
 .left-column[
-* Devs - make the code
+* Devs - provide the code
    * User Interface (UI/UX)
    * Business Logic/Rules
    * Integrations
    * Database (usually)
+
+Prepare applications for production.
 ]
 --
 
@@ -152,6 +168,9 @@ So lets hold off on "What is it" and go to...
    * Servers
    * Networks
    * Databases
+   * Security
+
+Operate applications in production.
 ]
 
 ???
@@ -338,6 +357,14 @@ Communication is via Word documents - the dreaded .red[_Release Guide_]
  * Updates to one app causes an outage to another app
  * The Release Party: multiple LOBs involved in a release
 
+???
+Whys:
+
+* Because other team not available
+* Because unexpected impact
+* Solution: Look for impacts, involve other teams in releases
+* Because unexpected dependencies
+* Solution: Eliminate dependencies
 ---
 
 # All of which leads to...
@@ -388,7 +415,7 @@ A day - or several - fixing things
 * Checklists are really popular for this
 * The checklists grow continuously as more scenarios are found
 
----
+???
 class: center, middle
 # Discussion - real life examples
 ---
@@ -416,28 +443,27 @@ class: center, middle
 .right-column[
 * Conceptually, ITIL approach is good, but implementations tend to assume:
    * We *almost* did it right, we just need to do it .red[*better*] next time
+   * Plan more - add checklists, gates
    * Test more - take our time, check *EVERYTHING*
-   * Culturally - directive/top down
+* Culturally - directive/top down
+   * Add administrators, Project Managers planning, checking
+   * Not lazy
 ]
 
 --
 
 .right-column[
-#### Approach:
-
-* Documents, checklists and signoffs
-
 #### Impact:
 
-* Longer release cycles, little improvement
+* Longer release cycles but little improvement
 ]
 
 ???
 
 ---
-# Adding to the Challenge
+## Increasing the Challenges
 
-## Enter: Agile Development Methodologies
+#### Agile Development Methodologies
 
 <img src="images/Scrum_diagram.png" alt="Scrum Release Cycle" width="60%" >
 
@@ -453,9 +479,9 @@ In fact - can be worse - Lean Initiative at the Business level
 * Creates demand at the front end
 ---
 
-# Another Approach
+## Another Approach
 
-## How what about applying Agile...
+### How what about applying Agile...
 --
 .left-column[#### ...to the **_value delivery process_**]
 --
@@ -608,9 +634,8 @@ In fact - can be worse - Lean Initiative at the Business level
 * Getting Started: Value Stream Mapping
 * Organizational Structure
 * Work Tracking and Organization
+* Problem Management
 * Integrating Operations into Daily Work
-* Deployment Pipelines (or Lifecycles)
-* Automated Tools Landscape
 
 ---
 
@@ -648,6 +673,10 @@ Cut the 1 week in the queue to 1 day, efficiency goes to:
 
 <img src="images/Map-Goes-Here.png" alt="Value Stream Mapping Example" width="80%" >
 
+???
+If we have time/very little discussion - lead Mapping Session
+15 minutes - if before 11AM
+
 ---
 # Aside: My Team's Journey
 
@@ -656,8 +685,8 @@ Cut the 1 week in the queue to 1 day, efficiency goes to:
 &nbsp;
 * Development and Ops Team
 * "Demanding", "Fickle" Management
-* "Must Have" releases - ready or not
-* Thrashing - jumping between features
+   * "Must Have" releases - ready or not
+   * Thrashing - jumping between features
 * Poor quality software
    * Server errors, outages
 ]
@@ -671,12 +700,18 @@ Cut the 1 week in the queue to 1 day, efficiency goes to:
   * Repeat
 
 
+* Steps:
+  * Build, deploy automation
+  * Routine production releases
+  * Shrink release intervals
+  * Release only "ready" code
+  * Test automation
+
+
 * Results:
-  * Only ready to release code was released
-  * Release time dropped to minutes
-  * Release intervals dropped to daily - weekly
+  * Value delivered much faster
   * Product quality went way up
-  * Value delivery cadence went way up
+
 ]
 ---
 
@@ -713,7 +748,9 @@ Is it the right approach?
 * Should the architecture be match the organization to improve the process?
 * What will be the transitional impact?
 
-#### Avoid a mismatch of process and organization
+#### Goal: Avoid a mismatch of process and organization
+
+* Consider this during the value stream mapping process
 
 --
 
@@ -726,6 +763,8 @@ Is it the right approach?
 Picture - Monolith vs. Microservices -
 ---
 ## Work Tracking and Organization (aka JIRA)
+
+--
 
 ### Key continuous improvement enabler
 
@@ -744,7 +783,9 @@ Picture - Monolith vs. Microservices -
 
 --
 
+
 * When tied to version control - "free" documentation
+   * Business Reason <--> Code
 
 --
 
@@ -793,6 +834,66 @@ EXERCISE - Kanban board design - columns, WIP limits, distributing work
 
 ---
 
+## Work Tracking: Ceremonies
+
+#### Avoiding the endless to do list
+
+--
+
+* Regular planning
+   * Reprioritization
+   * Metrics review
+   * Estimates
+--
+
+* Problem Management vs. Incidents
+   * Critical Incident Review
+--
+
+* Regular retrospectives
+   * Brainstorm - what's not working
+   * Pick one/two
+   * How could we make it better?
+   * Pick one/two - do it for 2 weeks
+   * Retrospective - working? habit?
+
+---
+
+## Problem Management
+
+--
+
+.left-column[
+### ITIL Concepts
+
+* Fix the incident
+* Identify the problem
+* Document (Categorize, Track, Prioritize)
+* Communicate (Knowledgebase)
+* Address (Diagnose, Workaround, Resolution)
+* Report (Metrics)
+]
+--
+
+.right-column[
+### DevOps Spin
+
+* Fix the incident
+* Identify the problem
+* Critical incident review - .red[blameless]
+   * The 5 Whys
+   * Mitigate
+* Iterate:
+   * Theorize: Issue and Feedback
+   * Approach: Fix and Instrument
+   * Backlog items
+   * Act
+]
+
+???
+
+5 Whys - Roast example
+
 ## Work Tracking: Version Control Integration
 
 * Trace from business change (Issue Tracking) to code change
@@ -802,9 +903,11 @@ EXERCISE - Kanban board design - columns, WIP limits, distributing work
 * Trace from code change to business change
 
 ---
-# Integrating Operations into Daily Work
+## Integrating Operations into Daily Work
 
-## Think Operations from the Start
+--
+
+### Think Operations from the Start
 
 * In Software Development-focused Organizations
   * Include Ops on cross-functional teams
@@ -813,7 +916,7 @@ EXERCISE - Kanban board design - columns, WIP limits, distributing work
 
 --
 
-## Methods
+### Methods
 
 * Ops as part of
   * The Agile team
@@ -822,72 +925,31 @@ EXERCISE - Kanban board design - columns, WIP limits, distributing work
      * Visibility of ALL work
 
 ---
-# Integrating Operations into Daily Work
+## Integrating Operations into Daily Work
 
-## Benefits
+.left-column[
+### Minimum Benefit
 
-* Minimum: drastically reduce release risk
-  * Never release for the first time to Production the night before Go Live!!!
+* Drastically reduce release risk
+  * Ops deploying regularly
+  * Production != Go Live Date - 1
 
-<img src="images/nodrama-release.jpg" alt="No drama releases" width="20%" >
+<img src="images/nodrama-release.jpg" alt="No drama releases" width="40%" >
+]
 
 --
 
+.right-column[
 ### Plus
 
 * Cross-training of technical resources
 * Increased Ops business awareness - what matters and why
 * Global approaches to challenges
 * First class operations features - patching, logging, monitoring, notifications
-
+]
 ???
 EXERCISE - Org Structure of their team - impact
 
----
-# Deployment Pipelines (or Lifecycles)
-
-### Replace the Release Guide with Automation
-
-.left-column[
-* Multiple layers
-  * Application Build
-  * Application Verification
-      * Application Functionality
-      * Application Security
-  * Application Deployment
-     * Configuration as Code
-         * "Pets vs. Cattle"
-]
-
-.right-column[
-<img src="images/Pets-Cattle-2.png" alt="Pets vs. Cattle" width="70%" >
-]
----
-# Deployment Pipeline
-<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="60%" >
-
-.left-column[
-* Reliable - no human errors
-* Fast, easy
-   * Eliminate production hacks
-* Little or (ideally) no downtime
-   * Mid-day deploys - Whoohoo!!
-* Evolving - 80-20 Rule
-* Evolving - Adding value
-* Automated Feedback/Visibility
-]
---
-
-.right-column[
-* Other Ops opportunities
-  * "RunBook" (documentation) to Scripts
-  * Generate Artifacts
-     * Release Notes
-     * Configuration and Dependencies
-  * Cross-Cutting Concerns (later...)
-]
-???
-Discussion: what is the
 ---
 # DevOps For Ops Teams
 
@@ -946,8 +1008,89 @@ Exercise - tools to address a section of their value stream or a pre-canned one 
 * Outsource non-core activities
 * First-Class automation
 * Evolving to give Cloud capabilities on or off premise
+---
+
+## Deployment Pipelines (or Lifecycles)
+
+### Replace the Release Guide with Automation
+
+.left-column[
+* Multiple layers
+  * Application Build
+  * Application Verification
+      * Application Functionality
+      * Application Security
+  * Application Deployment
+     * Configuration as Code
+         * "Pets vs. Cattle"
+]
+
+.right-column[
+<img src="images/Pets-Cattle-2.png" alt="Pets vs. Cattle" width="70%" >
+]
 
 ---
+# Deployment Pipeline
+<img src="images/continuous-deployment-pipeline.png" alt="Deployment Pipeline" width="60%" >
+
+--
+
+.left-column[
+* Reliable - no human errors
+* Fast, easy
+   * Eliminate production hacks
+* Little or (ideally) no downtime
+   * Mid-day deploys - Whoohoo!!
+* Evolving - 80-20 Rule
+* Evolving - Adding value
+* Automated Feedback/Visibility
+]
+--
+
+.right-column[
+* Other Ops opportunities
+  * "RunBook" (documentation) to Scripts
+  * Generate Artifacts
+     * Release Notes
+     * Configuration and Dependencies
+  * Cross-Cutting Concerns (later...)
+]
+???
+Discussion: what is the
+
+---
+# Key Tools: Continuous Delivery
+
+### Name dropping time...
+
+--
+
+
+* #### .black[Version Control - git, github, gitlab]
+
+--
+
+* #### .black[Scripting - Shell, Rundeck, Webhooks]
+
+--
+
+* #### .black[Continuous Integration - Jenkins (job runner), xUnit Test]
+
+--
+
+* #### .black[Release Management - XL Release]
+
+--
+
+* #### .black[Database Change Management - Datical, Liquibase]
+???
+
+Example - ICM - 24-48 hours of orchestrated activities - 10 people in a room
+Common - developers best effort
+
+WARNING: COTS Software - especially from early 2000s
+---
+
 # Key Tools - Infrastructure as Code
 
 --
@@ -1000,12 +1143,14 @@ Sample Ansible Playbook - Web Server
 * Create once, run everywhere
    * Run .bold.green[same] container dev and prod
    * Drastic reduction in shared dependencies
+   * Generally: one component / container
 
 #### But...
 
 * New and evolving quickly
 * Complex to manage at scale
-* True use...as building blocks
+* Intended use: App building blocks
+   * But experiment on laptop/desktop
 ]
 ---
 # Key Tools: Containers and Orchestration
@@ -1040,54 +1185,23 @@ redis:
 
 .right-column[<img src="images/orchestration.png" alt="Kubernetes Orchestration" width="100%" >]
 ---
-# Key Tools: Continuous Delivery
-
-### Name dropping time...
+# Key Tools: Cross team Collaboration
 
 --
 
-
-* #### .black[Version Control - git, github, gitlab]
-
---
-
-* #### .black[Scripting - Shell, Rundeck, Webhooks]
+* #### .black[Version Control - git/github/Stash]
 
 --
 
-* #### .black[Continuous Integration - Jenkins (job runner), xUnit Test]
+* #### .black[Issue Tracking - JIRA/Trello]
 
 --
 
-* #### .black[Release Management - XL Release]
+* #### .black[Chat, ChatOps - Slack/HipChat]
 
 --
 
-* #### .black[Database Change Management - Datical, Liquibase]
-???
-
-Example - ICM - 24-48 hours of orchestrated activities - 10 people in a room
-Common - developers best effort
-
-WARNING: COTS Software - especially from early 2000s
----
-# Key Tools: Collaboration
-
---
-
-* #### .black[Version Control - git]
-
---
-
-* #### .black[Issue Tracking - JIRA]
-
---
-
-* #### .black[Chat, ChatOps - Slack]
-
---
-
-* #### .black[Logging - Logstash]
+* #### .black[Wiki, Documentation - github/Confluence/Google Docs]
 
 ---
 # DevOps For Ops Teams
@@ -1141,7 +1255,7 @@ Verification of standards - database, security, look and feel, etc., etc.
 #### Iterative Process
 
 * Release Pain Points
-   * Regular problems
+   * Ongoing problems
    * Too much effort to do manually - automate it
 
 
@@ -1425,6 +1539,7 @@ Architectural Dependencies
 
 #### .black[&nbsp;&nbsp; The Three Ways]
 #### .black[&nbsp;&nbsp; Culture, Automation, Lean, Measurement, Sharing (CALMS)]
+#### .black[&nbsp;&nbsp; Proposal: Getting Started with DevOps]
 ---
 
 # The Three Ways
@@ -1457,7 +1572,7 @@ Architectural Dependencies
 .left-column[
 ### Anti-Patterns
 
-* Little collaboration across groups
+* Siloed groups
 * New day, same pain
 * Little/no version control
 * Other Environments not like Prod
@@ -1504,6 +1619,26 @@ CALMS
    * Backed by lots of powerful tools - largely developed and shared in the open
 
 ---
+###Proposal: Getting Started with DevOps
+
+--
+
+* Value Stream Mapping
+--
+
+* Work Tracking
+--
+
+* Regular Ceremonies around Work Tracking
+--
+
+* Critical Incident Reviews
+
+--
+
+## Foundation: Team-based Culture
+---
+
    #That's it!
    #&nbsp;
 

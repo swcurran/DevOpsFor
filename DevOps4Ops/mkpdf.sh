@@ -19,4 +19,4 @@ sed '/^--$/d' $pres | sed '/count:false/,/---/d' >$stripped
 
 MSYS_NO_PATHCONV=1 docker run --rm -v `pwd`:/slides -v ~:/home/user astefanutti/decktape:1.0.0 --screenshots $stripped $pdf
 
-# rm $stripped
+rm $stripped
