@@ -16,7 +16,7 @@ Need Agile Concepts Training?  Contact **info@cloudcompass.ca** for help.
 
 ## Introduction
 - What’s the problem? Why do DevOps?
-- DevOps, ITIL and Agile Operations
+- Service Design, Agile and DevOps
 
 ## Agile, Continuous Delivery and the Three Ways
 - The Principles of Flow
@@ -46,4 +46,5 @@ Need Agile Concepts Training?  Contact **info@cloudcompass.ca** for help.
 ## Summary
 - The Three Ways
 - CALMS (Culture, Automation, Lean, Measurement, Sharing)
-- Resources
+- Where to from here?
+- Resources and References
