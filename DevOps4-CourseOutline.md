@@ -1,12 +1,12 @@
-DevOps for Ops - Course Outline
+DevOps for * - Course Outline
 -----------------
 
-An introductory-to-intermediate course about DevOps targeting teams that are primarily Ops.
+An introductory-to-intermediate course about DevOps targeting different types of teams/groups that will be relying on DevOps. Versions of the course have been given to groups of Developers, Ops and Product Owners, and to Agile Teams.
 
 #### Assumptions:
 1. Participants have been exposed to Agile Concepts and Agile Methodologies.
-2. Presenter has sat down with Development Leadership to understand the current development/operations approaches and future directions.
-3. Course content is adjusted based on the findings of 1 and 2.
+2. Presenter has sat down with team/group Leadership to understand the current development/operations approaches and future directions.
+3. Course content has been adjusted based on the findings of 1 and 2.
 
 Need Agile Concepts Training?  Contact **info@cloudcompass.ca** for help.
 
